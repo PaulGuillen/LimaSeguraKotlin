@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/bg_round.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/custom_editext_rounded.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/editext_border.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_contact_phone.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_email.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_exclamation.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_fireplace.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_home.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_info.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_local_police.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_lock.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_person.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_serenazgo.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_settings.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_share.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/progress_bar.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_category.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_detailed_all.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_main.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_register.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_settings.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_twitter.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_view_all_section.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/cardview_district.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/cardview_station.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/cardview_view_all_item.xml" value="0.33" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/charge_dialog.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/connection_dialog.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_district.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_home.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_news.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_station.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/item_dolar.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/item_news.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/menu/bottom_navigation_category.xml" value="0.3145833333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_inicio"
+        android:icon="@drawable/ic_home"
+        android:title="@string/inicio_menu" />
+
+    <item
+        android:id="@+id/item_noticia"
+        android:icon="@drawable/ic_new"
+        android:title="@string/noticias_menu" />
+
+    <item
+        android:id="@+id/item_estacion"
+        android:icon="@drawable/ic_lima"
+        android:title="@string/servicios_menu" />
+
+    <item
+        android:id="@+id/item_distrito"
+        android:icon="@drawable/ic_district"
+        android:title="@string/distritos_menu" />
+
+
+</menu>

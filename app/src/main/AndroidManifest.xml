@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="devpaul.business.safetylima">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SafetyLima">
+        <activity
+            android:name=".activities.register.TwitterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.category.sections.DetailedAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.category.sections.ViewAllActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.category.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.resetpassword.ResetPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.register.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
