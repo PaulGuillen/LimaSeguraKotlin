@@ -39,6 +39,12 @@ _Tener instalado Android Studio, conocer sobre kotlin, google maps, mercado pago
 
 _En este caso usaremos el usuario TEST_
 
+```
+* correo = test@gmail.com
+* contraseña = 123456
+```
+
+
 <p align="center">
  <img src="https://i.postimg.cc/W3f7bTK2/Usuario.png"/>
 </p>
