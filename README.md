@@ -87,8 +87,14 @@ _* En este paso mostraré las demas vistas_
    <img src="https://i.postimg.cc/MKVxJTMm/Screenshot-1649191664.png"/>
 </p>
 
-Video de como funciona la APP 
+_En este video se mostrará las demas funcionalidades de la app._
 [LimaSegura-Video](https://user-images.githubusercontent.com/43099030/164521101-2f478148-5bf4-4fae-a95f-de9f18063a34.mp4)
+
+---
+
+## Contribuyendo 🖇️
+
+Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom)  😊
 
 ## Autor ✒️
 
