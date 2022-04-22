@@ -1,10 +1,10 @@
 # LimaSeguraKotlin
 
-Proyecto enfocado en mostrar noticias actualizadas por día, ademas de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos.
+_Proyecto enfocado en mostrar noticias actualizadas por día, ademas de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos._
 
 ## Comenzando 🚀
 
-Mira **Usuario test** para conocer el usuario asignado para esta prueba de diseños.
+_Mira **Usuario test** para conocer el usuario asignado para esta prueba de diseños._
 
 ### Pre-requisitos 📋
 
@@ -49,7 +49,7 @@ _En este caso usaremos el usuario TEST_
 
 ## Modelo de datos en Postman 📖
 
-Mostraré un ejemplo del estructura de la información que utilizaremos, en este caso es cotizaciondolar.json
+_Mostraré un ejemplo del estructura de la información que utilizaremos, en este caso es cotizaciondolar.json_
 
 ```
  {
@@ -91,16 +91,15 @@ _En este video se mostrará las demas funcionalidades de la app._
 
 [LimaSegura-Video](https://user-images.githubusercontent.com/43099030/164521101-2f478148-5bf4-4fae-a95f-de9f18063a34.mp4)
 
----
 
 ## Contribuyendo 🖇️
 
-Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom)  😊
+_Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom)  😊_
 
 ## Autor ✒️
 
-* **Paul Guillen Acuña** - *Mi Repositorio* - [PaulGuillen](https://github.com/PaulGuillen?tab=repositories)
+_**Paul Guillen Acuña** - *Mi Repositorio* - [PaulGuillen](https://github.com/PaulGuillen?tab=repositories)_
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (MIT License) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+_Este proyecto está bajo la Licencia (MIT License) - mira el archivo [LICENSE.md](LICENSE.md) para detalles_
