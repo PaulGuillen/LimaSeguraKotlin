@@ -96,6 +96,8 @@ _En este video se mostrará las demas funcionalidades de la app._
 
 _Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom)  😊_
 
+_No olviden apoyar a los creadores de las APIS_
+
 ## Autor ✒️
 
 _**Paul Guillen Acuña** - *Mi Repositorio* - [PaulGuillen](https://github.com/PaulGuillen?tab=repositories)_
