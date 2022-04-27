@@ -87,10 +87,11 @@ _* En este paso mostraré las demas vistas_
    <img src="https://i.postimg.cc/MKVxJTMm/Screenshot-1649191664.png"/>
 </p>
 
+## Video 📄
+
 _En este video se mostrará las demas funcionalidades de la app._
 
 [LimaSegura-Video](https://user-images.githubusercontent.com/43099030/164521101-2f478148-5bf4-4fae-a95f-de9f18063a34.mp4)
-
 
 ## Contribuyendo 🖇️
 
@@ -101,7 +102,3 @@ _No olviden apoyar a los creadores de las APIS_
 ## Autor ✒️
 
 _**Paul Guillen Acuña** - *Mi Repositorio* - [PaulGuillen](https://github.com/PaulGuillen?tab=repositories)_
-
-## Licencia 📄
-
-_Este proyecto está bajo la Licencia (MIT License) - mira el archivo [LICENSE.md](LICENSE.md) para detalles_
