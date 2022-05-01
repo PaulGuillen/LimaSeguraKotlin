@@ -1,6 +1,6 @@
 # LimaSeguraKotlin
 
-_Proyecto enfocado en mostrar noticias actualizadas por día, ademas de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos._
+_Proyecto enfocado en mostrar noticias actualizadas por día, además de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos._
 
 ## Comenzando 🚀
 
@@ -67,7 +67,8 @@ _Mostraré un ejemplo del estructura de la información que utilizaremos, en est
 ```
 
 ## Ejecutando los diseños ⚙️
-_* Vista Login y Registro_
+
+_Vista Login y Registro_
 
 _Procederemos a mostrar las vistas del registro e inicio de sesión_
 
