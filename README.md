@@ -78,7 +78,7 @@ _Procederemos a mostrar las vistas del registro e inicio de sesión_
  <img src="https://i.postimg.cc/HsqGSC68/Screenshot-1650580321.png"/>
 </p>
 
-_* En este paso mostraré las demas vistas_
+_En este paso mostraré las demas vistas_
 
 <p align="center">
     <img src="https://i.postimg.cc/0QQHkttq/Screenshot-1649191655.png"/>
