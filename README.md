@@ -6,6 +6,8 @@ _Proyecto enfocado en mostrar noticias actualizadas por día, además de contar 
 
 _Mira **Usuario test** para conocer el usuario asignado para esta prueba de diseños._
 
+_Puedes visualziar la app en Google Play [Lima Segura](https://play.google.com/store/apps/details?id=devpaul.business.safetylima)_
+
 ### Pre-requisitos 📋
 
 [Ver APIS](https://www.deperu.com/api/) -> Fuente : DePeru.com
