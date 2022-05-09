@@ -116,6 +116,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnColombia"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_margin="3dp"
@@ -145,6 +146,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnCuba"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_margin="3dp"
@@ -174,6 +176,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnMexico"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_margin="3dp"
@@ -194,7 +197,7 @@
                     <TextView
                         android:fontFamily="@font/monserrat_alternates_medium"
                         android:textAlignment="center"
-                        android:text="Cuba"
+                        android:text="México"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -204,6 +207,7 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnVenezuela"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:layout_margin="3dp"
@@ -224,7 +228,7 @@
                     <TextView
                         android:fontFamily="@font/monserrat_alternates_medium"
                         android:textAlignment="center"
-                        android:text="Cuba"
+                        android:text="Venezuela"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
