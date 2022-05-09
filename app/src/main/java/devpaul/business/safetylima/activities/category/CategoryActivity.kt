@@ -12,8 +12,6 @@ import devpaul.business.safetylima.fragments.DistrictFragment
 import devpaul.business.safetylima.fragments.HomeFragment
 import devpaul.business.safetylima.fragments.NewsFragment
 import devpaul.business.safetylima.fragments.StationFragment
-import devpaul.business.safetylima.fragments.newsfragment.ArgentinaFragment
-import devpaul.business.safetylima.fragments.newsfragment.DePeruFragment
 
 class CategoryActivity : AppCompatActivity() {
 

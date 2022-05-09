@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import devpaul.business.safetylima.R
-import devpaul.business.safetylima.adapter.newspackage.Data
+import devpaul.business.safetylima.entities.Data
 
 
 class MyDataAdapter(private val context: Context, private val articlesList: MutableList<Data.Articles>) :

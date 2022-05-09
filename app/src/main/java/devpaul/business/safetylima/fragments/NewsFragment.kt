@@ -18,9 +18,9 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
 import devpaul.business.safetylima.adapter.newspackage.CommonNewsData
-import devpaul.business.safetylima.adapter.newspackage.Data
+import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
-import devpaul.business.safetylima.adapter.newspackage.RetrofitServiceNewsApart
+import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
 import devpaul.business.safetylima.api.Common
 import devpaul.business.safetylima.entities.News
 import devpaul.business.safetylima.routes.RetrofitService

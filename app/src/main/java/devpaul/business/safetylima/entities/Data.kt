@@ -1,4 +1,4 @@
-package  devpaul.business.safetylima.adapter.newspackage
+package  devpaul.business.safetylima.entities
 
 class Data (
     var status : String ?=null,

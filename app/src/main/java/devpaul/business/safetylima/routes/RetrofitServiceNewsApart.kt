@@ -1,5 +1,6 @@
-package devpaul.business.safetylima.adapter.newspackage
+package devpaul.business.safetylima.routes
 
+import devpaul.business.safetylima.entities.Data
 import retrofit2.Call
 import retrofit2.http.GET
 
