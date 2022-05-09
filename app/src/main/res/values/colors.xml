@@ -17,4 +17,7 @@
     <color name="color_primary_gray">#9e9e9e</color>
     <color name="orange_white">#FFF3E0</color>
     <color name="primary_dark_green">#00701a</color>
+
+    <color name="colorGrey">#dddddd</color>
+
 </resources>

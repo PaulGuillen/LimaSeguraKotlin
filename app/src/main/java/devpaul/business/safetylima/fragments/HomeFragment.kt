@@ -15,11 +15,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import cn.pedant.SweetAlert.SweetAlertDialog
-import com.google.android.material.snackbar.Snackbar
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.activities.settings.SettingsActivity
 import devpaul.business.safetylima.api.Common

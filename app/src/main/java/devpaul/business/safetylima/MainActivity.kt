@@ -93,9 +93,6 @@ class MainActivity : AppCompatActivity() {
         btnGoogle = findViewById(R.id.btm_google)
 
         btnGoogle?.setOnClickListener {
-            progressDialog!!.show()
-            progressDialog?.setContentView(R.layout.charge_dialog)
-            Objects.requireNonNull(progressDialog!!.window)?.setBackgroundDrawableResource(android.R.color.transparent)
             signInWithGoogle()
         }
 
@@ -116,15 +113,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-
+        progressDialog!!.show()
+        progressDialog?.setContentView(R.layout.charge_dialog)
+        Objects.requireNonNull(progressDialog!!.window)?.setBackgroundDrawableResource(android.R.color.transparent)
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                    goToCategory()
                     progressDialog?.dismiss()
+                    goToCategory()
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -137,6 +137,7 @@ class MainActivity : AppCompatActivity() {
     private fun signInWithGoogle() {
         val signInIntent: Intent = googleSignInClient!!.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+        progressDialog?.dismiss()
     }
 
     @Suppress("DEPRECATION")
@@ -148,7 +149,9 @@ class MainActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
+                progressDialog?.dismiss()
             } catch (e: ApiException) {
+                progressDialog?.dismiss()
                 Log.w(TAG, "Google sign in failed", e)
             }
         }

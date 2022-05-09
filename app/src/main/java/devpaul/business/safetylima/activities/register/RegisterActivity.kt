@@ -1,6 +1,7 @@
 package devpaul.business.safetylima.activities.register
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,7 @@ import devpaul.business.safetylima.MainActivity
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.activities.category.CategoryActivity
 import devpaul.business.safetylima.entities.User
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -52,6 +54,9 @@ class RegisterActivity : AppCompatActivity() {
     //Twitter
     var btnTwitter : Button ? = null
 
+    @Suppress("DEPRECATION")
+    var progressDialog: ProgressDialog? = null
+
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +64,9 @@ class RegisterActivity : AppCompatActivity() {
 
         //desactivar rotacion pantalla
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        @Suppress("DEPRECATION")
+        progressDialog = ProgressDialog(this)
 
         auth = Firebase.auth
         edtName = findViewById(R.id.edt_name)
@@ -141,6 +149,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerUser() {
 
+        progressDialog!!.show()
+        progressDialog?.setContentView(R.layout.charge_dialog)
+        Objects.requireNonNull(progressDialog!!.window)?.setBackgroundDrawableResource(android.R.color.transparent)
+
         val name = edtName?.text.toString()
         val lastname = edtLastname?.text.toString()
         val email = edtEmail?.text.toString()
@@ -174,6 +186,7 @@ class RegisterActivity : AppCompatActivity() {
                                 .addOnSuccessListener {
                                     ProgressDialogFragment.showProgressBar(this)
                                     Toast.makeText(baseContext, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                    progressDialog?.dismiss()
                                     goToCategory()
                                     ProgressDialogFragment.hideProgressBar(this)
                                 }

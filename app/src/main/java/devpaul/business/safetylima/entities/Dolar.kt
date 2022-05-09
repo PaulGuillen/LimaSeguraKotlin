@@ -6,7 +6,7 @@ data class Dolar(
     val servicio: String? = null,
     val sitio: String? = null,
     val enlace: String? = null,
-    var Cotizacion: MutableList<Cotizacion>
+    val Cotizacion: MutableList<Cotizacion>
 )
 
 data class Cotizacion(
