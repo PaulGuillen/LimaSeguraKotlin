@@ -191,6 +191,7 @@ class RegisterActivity : AppCompatActivity() {
                                     ProgressDialogFragment.hideProgressBar(this)
                                 }
                                 .addOnFailureListener { e ->
+                                    progressDialog?.dismiss()
                                     Log.w(TAG, "Error adding document", e)
                                 }
 
@@ -207,7 +208,6 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
         }
-
 
     }
 

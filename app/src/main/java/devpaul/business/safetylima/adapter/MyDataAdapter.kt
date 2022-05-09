@@ -27,10 +27,25 @@ class MyDataAdapter(private val context: Context, private val articlesList: Muta
 
         val news = articlesList[position]
 
-        Glide.with(context).load(articlesList[position].urlToImage).into(holder.image)
+        if(articlesList[position].content == null){
+            holder.txt_resumen.text = "El resumen de esta noticia no esta disponible en este momento, lamentamos los incovenientes con los servidores."
+        }else{
+            holder.txt_resumen.text = articlesList[position].content
+        }
+
+        if(articlesList[position].description == null){
+            holder.txt_palsclave.text = "Las palabras claves de esta noticia no se encuentran disponibles en este momento."
+        }else{
+            holder.txt_palsclave.text = articlesList[position].description
+        }
+
+        if (articlesList[position].urlToImage == null) {
+            Glide.with(context).load(R.drawable.news).into(holder.image);
+        } else {
+            Glide.with(context).load(articlesList[position].urlToImage).into(holder.image)
+        }
+
         holder.txt_titulo.text = articlesList[position].title
-        holder.txt_resumen.text = articlesList[position].content
-        holder.txt_palsclave.text = articlesList[position].description
         holder.txt_fecha.text = articlesList[position].publishedAt
 
         holder.itemView.setOnClickListener {

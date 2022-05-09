@@ -179,6 +179,7 @@ class MainActivity : AppCompatActivity() {
                         goToCategory()
                         progressDialog?.dismiss()
                     } else {
+                        progressDialog?.dismiss()
                         Toast.makeText(this@MainActivity, "Usuario no encontrado.", Toast.LENGTH_SHORT).show()
                         Log.w(TAG, "Error: Usuario no encontrado", task.exception)
                     }
