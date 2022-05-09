@@ -1,5 +1,6 @@
-package devpaul.business.safetylima.adapter.newspackage
+package devpaul.business.safetylima.api
 
+import devpaul.business.safetylima.api.apifornews.RetrofitClient
 import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
 
 object CommonNewsData {

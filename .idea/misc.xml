@@ -20,6 +20,7 @@
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_settings.xml" value="0.33489583333333334" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/ic_share.xml" value="0.33489583333333334" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/progress_bar.xml" value="0.33489583333333334" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/drawable/white_rectangle_background.xml" value="0.33489583333333334" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_category.xml" value="0.16" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_detailed_all.xml" value="0.2" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/activity_main.xml" value="0.22" />
@@ -39,7 +40,7 @@
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_de_peru.xml" value="0.3145833333333333" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_district.xml" value="0.3145833333333333" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_home.xml" value="0.3145833333333333" />
-        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_news.xml" value="0.3145833333333333" />
+        <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_news.xml" value="0.33" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/fragment_station.xml" value="0.3145833333333333" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/item_dolar.xml" value="0.3145833333333333" />
         <entry key="..\:/Proyectos/ProyectosAndroidStudio/SafetyLima/app/src/main/res/layout/item_news.xml" value="0.3145833333333333" />

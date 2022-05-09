@@ -153,43 +153,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="bottom"
+                android:gravity="bottom"
                 android:orientation="vertical">
 
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvName"
                     android:layout_width="match_parent"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dp"
-                        android:layout_weight="1"
-                        android:background="#DFDFDF" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/monserrat_alternates_medium"
-                        android:text="Realizado por Paul Guillen"
-                        android:textAlignment="center"
-                        android:textSize="17sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="#DFDFDF" />
-
-                </LinearLayout>
-
+                    android:background="#424242"
+                    android:fontFamily="@font/monserrat_alternates_medium"
+                    android:padding="20dp"
+                    android:text="Realizado por Paul Guillen"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

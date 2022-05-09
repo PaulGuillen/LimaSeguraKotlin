@@ -99,5 +99,11 @@
     <string name="image_card_three">image_card_three</string>
     <string name="ic_phone_detail">ic_phone_detail</string>
     <string name="salir">Salir</string>
+    <string name="deperu">DePeru</string>
+    <string name="argentina">Argentina</string>
+    <string name="colombia">Colombia</string>
+    <string name="cuba">Cuba</string>
+    <string name="m_xico">México</string>
+    <string name="venezuela">Venezuela</string>
 
 </resources>

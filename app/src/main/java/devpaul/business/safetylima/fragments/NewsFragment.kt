@@ -11,13 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
-import devpaul.business.safetylima.adapter.newspackage.CommonNewsData
+import devpaul.business.safetylima.api.CommonNewsData
 import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
 import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
@@ -28,7 +29,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
-
 
 class NewsFragment : Fragment() , View.OnClickListener {
 
@@ -47,8 +47,8 @@ class NewsFragment : Fragment() , View.OnClickListener {
 
 
     //Buttons
-    var btnDePeru : Button ? = null
-    var btnArgentina : Button ? = null
+    var btnDePeru : CardView ? = null
+    var btnArgentina : CardView ? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -71,27 +71,37 @@ class NewsFragment : Fragment() , View.OnClickListener {
         btnArgentina?.setOnClickListener(this)
 
 
+        return myView
+    }
 
+    override fun onClick(view: View?) {
+        when (view) {
+            btnDePeru -> validationDePeru()
+            btnArgentina -> validationArgentina()
+
+        }
+    }
+
+    private fun validationDePeru(){
         if (isOnline()){
             getAllNewsList()
         } else{
             getConnectionValidation()
         }
 
-
-        return myView
     }
 
-    override fun onClick(view: View?) {
-        when (view) {
-            btnDePeru -> getAllNewsList()
-            btnArgentina -> getArgentinaNews()
-
+    private fun validationArgentina(){
+        if (isOnline()){
+            getArgentinaNews()
+        } else{
+            getConnectionValidation()
         }
-    }
-    private fun getArgentinaNews() {
 
-        mService2.getDataList().enqueue(object : Callback<Data?> {
+    }
+
+    private fun getArgentinaNews() {
+        mService2.getDataArgentina().enqueue(object : Callback<Data?> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
                 shimmerFrameLayout?.visibility = View.GONE
@@ -106,6 +116,7 @@ class NewsFragment : Fragment() , View.OnClickListener {
             }
 
             override fun onFailure(call: Call<Data?>, t: Throwable) {
+                shimmerFrameLayout?.visibility = View.GONE
                 Log.d(TAG, t.message!!)
             }
         })
@@ -113,7 +124,6 @@ class NewsFragment : Fragment() , View.OnClickListener {
     }
 
     private fun getAllNewsList() {
-
         mService.getNewsList().enqueue(object : Callback<MutableList<News>> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<MutableList<News>>, response: Response<MutableList<News>>) {
@@ -180,5 +190,15 @@ class NewsFragment : Fragment() , View.OnClickListener {
         shimmerFrameLayout?.startShimmerAnimation()
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        if (isOnline()){
+            getAllNewsList()
+        } else{
+            getConnectionValidation()
+        }
+
+    }
 
 }
