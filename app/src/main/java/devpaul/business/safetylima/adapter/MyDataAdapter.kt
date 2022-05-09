@@ -1,5 +1,6 @@
 package devpaul.business.safetylima.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -23,6 +24,7 @@ class MyDataAdapter(private val context: Context, private val articlesList: Muta
         return MyViewHolder(itemVIew)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val news = articlesList[position]
