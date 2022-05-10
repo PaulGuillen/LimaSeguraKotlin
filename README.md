@@ -32,7 +32,6 @@ _Tener instalado Android Studio, conocer sobre kotlin, consultas con retrofit2, 
     
     @GET("uitperu.json")
     fun getUIT () : Call<UIT>
-
 ```
 
 ## Usuario test 🖇️
@@ -42,7 +41,6 @@ _En este caso usaremos el usuario TEST_
 ```
 . correo = test@gmail.com
 . contraseña = 123456
-
 ```
 
 <p align="center">
