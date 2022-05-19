@@ -99,6 +99,8 @@ _En este video se mostrará las demas funcionalidades de la app_
 
 _Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom)  😊_
 
+_Tambien agradecer a la página [NewsAPi.org](https://newsapi.org/) _
+
 _No olviden apoyar a los creadores de las APIS_
 
 ## Autor ✒️
