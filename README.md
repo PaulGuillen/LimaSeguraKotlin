@@ -101,7 +101,7 @@ _Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servid
 
 _Tambien agradecer a la página [NewsAPi.org](https://newsapi.org/) _
 
-_No olviden apoyar a los creadores de las APIS_
+_No olviden apoyar a los creadores de las API_
 
 ## Autor ✒️
 
