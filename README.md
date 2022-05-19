@@ -91,7 +91,7 @@ _En este paso mostraré las demas vistas_
 
 ## Video 📄
 
-_En este video se mostrará las demas funcionalidades de la app._
+_En este video se mostrará las demas funcionalidades de la app_
 
 [LimaSegura-Video](https://user-images.githubusercontent.com/43099030/164521101-2f478148-5bf4-4fae-a95f-de9f18063a34.mp4)
 
