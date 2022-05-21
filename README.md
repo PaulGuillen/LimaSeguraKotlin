@@ -83,8 +83,10 @@ _Procederemos a mostrar las vistas del registro e inicio de sesión_
 _En este paso mostraré las demas vistas_
 
 <p align="center">
-    <img src="https://i.postimg.cc/0QQHkttq/Screenshot-1649191655.png"/>
-   <img src="https://i.postimg.cc/Cdyv4wwF/Screenshot-1649191659.png"/>
+   <img src="https://i.postimg.cc/0QQHkttq/Screenshot-1649191655.png"/>
+   <img src="https://i.postimg.cc/GtMLxxQZ/Screenshot-1653170291.png"/>
+   <img src="https://i.postimg.cc/15t55bRP/Screenshot-1653170295.png"/>
+   <img src="https://i.postimg.cc/HLGpzxws/Screenshot-1653170299.png"/>
    <img src="https://i.postimg.cc/BZdszD6v/Screenshot-1649191662.png"/>
    <img src="https://i.postimg.cc/MKVxJTMm/Screenshot-1649191664.png"/>
 </p>
