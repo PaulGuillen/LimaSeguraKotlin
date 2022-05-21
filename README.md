@@ -95,7 +95,7 @@ _En este paso mostraré las demas vistas_
 
 _En este video se mostrará las demas funcionalidades de la app_
 
-Nota : La ultima actualizacion del video esta en mi perfil de linkedin.
+Nota : La ultima actualización del video esta en mi perfil de linkedin.
 
 [LimaSegura-Video](https://user-images.githubusercontent.com/43099030/164521101-2f478148-5bf4-4fae-a95f-de9f18063a34.mp4)
 
