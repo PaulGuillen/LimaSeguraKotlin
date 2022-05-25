@@ -95,7 +95,7 @@ _En este paso mostraré las demas vistas_
 
 ## Video 📄
 
-_En este video se mostrará las demas funcionalidades de la app_
+_En este video se mostrará las demas funcionalidades de la app._
 
 _Nota : La ultima actualización del video esta en mi perfil de linkedin, Github no permite archivos pesados._
 
