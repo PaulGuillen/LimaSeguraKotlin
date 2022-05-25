@@ -103,7 +103,7 @@ _Nota : La ultima actualización del video esta en mi perfil de linkedin, Github
 
 ## Contribuyendo 🖇️
 
-_Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom) 😊_
+_Agradecer a la gente de DePeru.com por seguir subiendo informacion a sus servidores, un ❤️ por [DePeru.com](https://github.com/deperucom) 😊._
 
 _Tambien agradecer ❤️ a la página [NewsAPi.org](https://newsapi.org/) 😊_
 
