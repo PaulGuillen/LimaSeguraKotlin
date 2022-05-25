@@ -38,7 +38,7 @@ _Tener instalado Android Studio, conocer sobre kotlin, consultas con retrofit2, 
 
 ## Usuario test 🖇️
 
-_En este caso usaremos el usuario TEST_
+_En este caso usaremos el usuario TEST._
 
 ```
 . correo = test@gmail.com
