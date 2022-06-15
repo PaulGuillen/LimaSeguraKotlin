@@ -12,7 +12,7 @@ _Puedes visualziar la app en Google Play [Lima Segura](https://play.google.com/s
 
 [API_DePeru.com](https://www.deperu.com/api/) -> Fuente : DePeru.com.
 
-[NewsApi.org](https://newsapi.org/) -> Fuente : NewsApi.org
+[NewsApi.org](https://newsapi.org/) -> Fuente : NewsApi.org.
 
 _Tener instalado Android Studio, conocer sobre kotlin, consultas con retrofit2, conocimiento de firebase firestore, firebase auth._
 
