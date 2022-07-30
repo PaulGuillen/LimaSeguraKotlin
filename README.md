@@ -1,6 +1,6 @@
 # LimaSeguraKotlin
 
-_Proyecto enfocado en mostrar noticias actualizadas por día, además de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos, también podrás visualizar las noticias por país de NewsAPIS y de DePerú.com._
+_Proyecto enfocado en mostrar noticias actualizadas por día, además de contar con segmentos personalizados, podrás apreciar las estaciones de bomberos, serenazgo y policía por distrito y poder llamar a cada uno de estos, también podrás visualizar las noticias por país de NewsAPIS y de DePerú.com_
 
 ## Comenzando 🚀
 
