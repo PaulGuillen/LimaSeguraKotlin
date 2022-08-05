@@ -8,7 +8,7 @@ _Mira **Usuario test** para conocer el usuario asignado para esta prueba de dise
 
 _Puedes visualizar la aplicación movil hecha en android en Google Play [Lima Segura](https://play.google.com/store/apps/details?id=devpaul.business.safetylima)._
 
-##Nota si deseas saber como subir una aplicacion a produccion puedes enviarme un correo con el Asunto "Producción app"
+Nota si deseas saber como subir una aplicacion a produccion puedes enviarme un correo con el Asunto "Producción app".
 
 ### Pre-requisitos 📋
 
