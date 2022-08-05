@@ -6,7 +6,9 @@ _Proyecto enfocado en mostrar noticias actualizadas por día, además de contar 
 
 _Mira **Usuario test** para conocer el usuario asignado para esta prueba de diseños._
 
-_Puedes visualizar la aplicacion movil hecha en android en Google Play [Lima Segura](https://play.google.com/store/apps/details?id=devpaul.business.safetylima)._
+_Puedes visualizar la aplicación movil hecha en android en Google Play [Lima Segura](https://play.google.com/store/apps/details?id=devpaul.business.safetylima)._
+
+**Nota si deseas saber como subir una aplicacion a produccion puedes enviarme un correo con el Asunto "Producción app"
 
 ### Pre-requisitos 📋
 
