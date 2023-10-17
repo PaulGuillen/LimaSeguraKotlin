@@ -17,11 +17,9 @@ import com.facebook.shimmer.ShimmerFrameLayout
 
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
-import devpaul.business.safetylima.api.CommonNewsData
 import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
 import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
-import devpaul.business.safetylima.api.Common
 import devpaul.business.safetylima.entities.News
 import devpaul.business.safetylima.data.routes.RetrofitService
 import retrofit2.Call
@@ -61,8 +59,8 @@ class NewsFragment : Fragment() , View.OnClickListener {
 
         shimmerFrameLayout = myView?.findViewById(R.id.shimmerFrameLayout)
 
-        mService = Common.retrofitService
-        mService2 = CommonNewsData.retrofitService
+//        mService = Common.retrofitService
+//        mService2 = CommonNewsData.retrofitService
         recyclerViewNews = myView?.findViewById(R.id.recyclerView)
         recyclerViewNews?.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewNews?.setHasFixedSize(true)
@@ -286,8 +284,6 @@ class NewsFragment : Fragment() , View.OnClickListener {
 
         })
     }
-
-
 
 
     private fun getConnectionValidation() {

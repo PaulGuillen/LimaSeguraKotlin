@@ -20,13 +20,19 @@ import androidx.cardview.widget.CardView
 import cn.pedant.SweetAlert.SweetAlertDialog
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.activities.settings.SettingsActivity
-import devpaul.business.safetylima.api.Common
-import devpaul.business.safetylima.entities.Dolar
+import devpaul.business.safetylima.data.repository.DollarQuoteRepository
 import devpaul.business.safetylima.entities.UIT
 
 import devpaul.business.safetylima.providers.DolarUITProvider
 import devpaul.business.safetylima.data.routes.RetrofitService
+import devpaul.business.safetylima.domain.SingletonError
+import devpaul.business.safetylima.domain.custom_result.CustomResult
+import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
 import dmax.dialog.SpotsDialog
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +53,7 @@ class HomeFragment : Fragment() {
     var services: TextView? = null
     var buyDolar: TextView? = null
     var sellDolar: TextView? = null
-    var site: TextView? = null
+    var officialSite: TextView? = null
     var cardViewDolar: CardView? = null
     var date: TextView? = null
 
@@ -58,7 +64,7 @@ class HomeFragment : Fragment() {
     var sitioUIT: TextView? = null
     var cardViewUIT: CardView? = null
 
-    var setting : ImageButton ? = null
+    var setting: ImageButton? = null
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
@@ -69,7 +75,7 @@ class HomeFragment : Fragment() {
         myView = inflater.inflate(R.layout.fragment_home, container, false)
 
         services = myView?.findViewById(R.id.servicio)
-        site = myView?.findViewById(R.id.sitio)
+        officialSite = myView?.findViewById(R.id.sitio)
         buyDolar = myView?.findViewById(R.id.compra)
         sellDolar = myView?.findViewById(R.id.venta)
         date = myView?.findViewById(R.id.Fecha)
@@ -92,65 +98,80 @@ class HomeFragment : Fragment() {
         val currentDate = sdf.format(Date())
         date?.text = currentDate
 
-        mService = Common.retrofitService
 
         dialog = SpotsDialog.Builder().setCancelable(false).setContext(requireContext()).build()
 
 
         if (isOnline()) {
-            getdollardata()
+            getQuoteDollar()
             getUIT()
         } else {
             getConnectionValidation()
-      /*      Snackbar.make(requireActivity().findViewById(android.R.id.content), "text to show", Snackbar.LENGTH_LONG).show();*/
+            /*      Snackbar.make(requireActivity().findViewById(android.R.id.content), "text to show", Snackbar.LENGTH_LONG).show();*/
         }
 
         return myView
     }
 
-    private fun getdollardata() {
-        currencyProvider.getCurrencyDolar()?.enqueue(object : Callback<Dolar> {
-            override fun onResponse(call: Call<Dolar>, response: Response<Dolar>) {
+    private fun getQuoteDollar() {
+        CoroutineScope(Dispatchers.Default).launch {
+            try {
+                val dollarQuoteRepository = DollarQuoteRepository()
+                val dollarUseCase = DollarQuoteUseCase(requireContext(), dollarQuoteRepository)
+                val dollarQuoteRequest = dollarUseCase.dollarQuote()
 
-                if (response.body() != null) {
-                    val servicio = response.body()?.servicio
-                    val sitio = response.body()?.sitio
-                    val enlace = response.body()?.enlace
-                    val Compra = response.body()?.Cotizacion?.get(0)?.Compra // ArrayList obteniendo data por posicion
-                    val Venta = response.body()?.Cotizacion?.get(0)?.Venta // ArrayList obteniendo data por posicion
+                withContext(Dispatchers.Main) {
+                    when (dollarQuoteRequest) {
+                        is CustomResult.OnSuccess -> {
+                            val data = dollarQuoteRequest.data
+                            val purchaseValue = data.Cotizacion[0].compra
+                            val saleValue = data.Cotizacion[0].venta
+                            val linkToDePeru = data.enlace
+                            val service = data.servicio
+                            val site = data.sitio
 
-                    services?.text = servicio
-                    site?.text = sitio
-                    buyDolar?.text = Compra.toString()
-                    sellDolar?.text = Venta.toString()
-                    cardViewDolar?.setOnClickListener {
-                        if (!enlace.isNullOrBlank()) {
+                            buyDolar?.text = purchaseValue.toString()
+                            sellDolar?.text = saleValue.toString()
+                            services?.text = service
+                            officialSite?.text = site
 
-                            SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?").setCancelText("Cancelar")
-                                .setConfirmText("Si")
-                                .setConfirmClickListener {
-                                    val url = enlace
-                                    val i = Intent(Intent.ACTION_VIEW)
-                                    i.data = Uri.parse(url)
-                                    startActivity(i)
-                                    it.dismiss()
+                            cardViewDolar?.setOnClickListener {
+                                if (!linkToDePeru.isNullOrBlank()) {
+                                    SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
+                                        .setCancelText("Cancelar")
+                                        .setConfirmText("Si")
+                                        .setConfirmClickListener {
+                                            val i = Intent(Intent.ACTION_VIEW)
+                                            i.data = Uri.parse(linkToDePeru)
+                                            startActivity(i)
+                                            it.dismiss()
+                                        }
+                                        .showCancelButton(true).setCancelClickListener { sDialog ->
+                                            sDialog.cancel()
+                                        }.show()
+
                                 }
-                                .showCancelButton(true).setCancelClickListener { sDialog ->
-                                    sDialog.cancel()
-                                }.show()
+                            }
 
                         }
-                    }
 
+                        is CustomResult.OnError -> {
+                            val codeState = SingletonError.code
+                            val titleState = SingletonError.title
+                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
+                                "No data"
+                            } else {
+                                SingletonError.subTitle
+                            }
+                        }
+                    }
                 }
 
+            } catch (e: Exception) {
+
             }
 
-            override fun onFailure(call: Call<Dolar>, t: Throwable) {
-                Log.v(TAG, "Error: ${t.message}")
-            }
-
-        })
+        }
     }
 
     private fun getUIT() {
