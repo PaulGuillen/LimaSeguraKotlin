@@ -1,0 +1,8 @@
+
+2kotlin:S1128	"Remove this unused import.(´Ùí
+akotlin:S1192±"JDefine a constant instead of duplicating this literal "La Molina" 3 times.(Ò‹
+;kotlin:S1874)"#Deprecated code should not be used.(¨ëî”
+@kotlin:S1874"#Deprecated code should not be used.(·•¥¦ûÿÿÿÿ
+@kotlin:S1874!"#Deprecated code should not be used.(‚ó™Åøÿÿÿÿ
+;kotlin:S1874)"#Deprecated code should not be used.(¨ëî”
+pkotlin:S3776$"SRefactor this method to reduce its Cognitive Complexity from 336 to the 15 allowed.(¶Á»¬şÿÿÿÿ
