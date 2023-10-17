@@ -3,7 +3,7 @@ package devpaul.business.safetylima.providers
 import devpaul.business.safetylima.api.Common
 import devpaul.business.safetylima.entities.Dolar
 import devpaul.business.safetylima.entities.UIT
-import devpaul.business.safetylima.routes.RetrofitService
+import devpaul.business.safetylima.data.routes.RetrofitService
 import retrofit2.Call
 
 class DolarUITProvider() {

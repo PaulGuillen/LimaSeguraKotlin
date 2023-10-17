@@ -25,7 +25,7 @@ import devpaul.business.safetylima.entities.Dolar
 import devpaul.business.safetylima.entities.UIT
 
 import devpaul.business.safetylima.providers.DolarUITProvider
-import devpaul.business.safetylima.routes.RetrofitService
+import devpaul.business.safetylima.data.routes.RetrofitService
 import dmax.dialog.SpotsDialog
 import retrofit2.Call
 import retrofit2.Callback

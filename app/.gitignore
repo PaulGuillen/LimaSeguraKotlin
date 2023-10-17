@@ -1,1 +1,5 @@
 /build
+.idea/sonarlint/issuestore/
+.idea/sonarlint/securityhotspotstore/
+.idea/kotlinnc.xml
+.idea/misc.xml

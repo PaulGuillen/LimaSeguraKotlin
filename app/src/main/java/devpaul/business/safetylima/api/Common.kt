@@ -1,6 +1,6 @@
 package devpaul.business.safetylima.api
 
-import devpaul.business.safetylima.routes.RetrofitService
+import devpaul.business.safetylima.data.routes.RetrofitService
 
 
 object Common {

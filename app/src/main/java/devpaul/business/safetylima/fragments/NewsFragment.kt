@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +23,7 @@ import devpaul.business.safetylima.adapter.MyDataAdapter
 import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
 import devpaul.business.safetylima.api.Common
 import devpaul.business.safetylima.entities.News
-import devpaul.business.safetylima.routes.RetrofitService
+import devpaul.business.safetylima.data.routes.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
