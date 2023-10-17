@@ -11,11 +11,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import devpaul.business.safetylima.R
-import devpaul.business.safetylima.entities.News
 import cn.pedant.SweetAlert.SweetAlertDialog
+import devpaul.business.safetylima.data.models.entity.NewsPeru
 
-
-class MyNewsAdapter(private val context: Context, private val newsList: MutableList<News>) :
+class MyNewsAdapter(private val context: Context, private val newsList: MutableList<NewsPeru>) :
     RecyclerView.Adapter<MyNewsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -44,7 +43,7 @@ class MyNewsAdapter(private val context: Context, private val newsList: MutableL
         }
     }
 
-    private fun goToMainUrl(news : News){
+    private fun goToMainUrl(news : NewsPeru){
 
         SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Visitar página oficial?")
            .setCancelText("Cancelar")

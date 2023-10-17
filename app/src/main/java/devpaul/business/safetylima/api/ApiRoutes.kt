@@ -1,7 +1,7 @@
 package devpaul.business.safetylima.api
 
 import devpaul.business.safetylima.data.routes.RetrofitService
-import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
+import devpaul.business.safetylima.data.routes.RetrofitServiceNewsApart
 
 class ApiRoutes {
 

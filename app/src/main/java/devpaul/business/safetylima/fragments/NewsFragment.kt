@@ -2,7 +2,9 @@ package devpaul.business.safetylima.fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,15 +15,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.facebook.shimmer.ShimmerFrameLayout
 
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
 import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
-import devpaul.business.safetylima.routes.RetrofitServiceNewsApart
+import devpaul.business.safetylima.data.models.response.NewsResponse
+import devpaul.business.safetylima.data.repository.DollarQuoteRepository
+import devpaul.business.safetylima.data.repository.NewsPeruRepository
+import devpaul.business.safetylima.data.routes.RetrofitServiceNewsApart
 import devpaul.business.safetylima.entities.News
 import devpaul.business.safetylima.data.routes.RetrofitService
+import devpaul.business.safetylima.domain.custom_result.CustomResult
+import devpaul.business.safetylima.domain.uitl.SingletonError
+import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
+import devpaul.business.safetylima.domain.usecases.NewsPeruUseCase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -240,49 +254,47 @@ class NewsFragment : Fragment() , View.OnClickListener {
     }
 
     private fun getArgentinaNews() {
-        mService2.getDataArgentina().enqueue(object : Callback<Data?> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
-                shimmerFrameLayout?.visibility = View.GONE
-                recyclerViewNews?.visibility = View.VISIBLE
-                val jsonResponse: Data? = response.body()
-                /*          adapter = MyDataAdapter(requireContext(), response.body() as MutableList<Data.Articles>)*/
-                val data2 = jsonResponse?.articles as MutableList<Data.Articles>
-                /*  val data = ArrayList(listOf(jsonResponse?.items))*/
-                adapter2 = MyDataAdapter(requireContext(), data2)
-                recyclerViewNews?.adapter = adapter2
-                adapter2.notifyDataSetChanged()
-            }
 
-            override fun onFailure(call: Call<Data?>, t: Throwable) {
-                shimmerFrameLayout?.visibility = View.GONE
-                Log.d(TAG, t.message!!)
-            }
-        })
 
     }
 
     private fun getAllNewsList() {
-        mService.getNewsList().enqueue(object : Callback<MutableList<News>> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<MutableList<News>>, response: Response<MutableList<News>>) {
 
-                if (response.body() != null){
-                    shimmerFrameLayout?.visibility = View.GONE
-                    recyclerViewNews?.visibility = View.VISIBLE
-                    adapter1 = MyNewsAdapter(requireContext(), response.body() as MutableList<News>)
-                    adapter1.notifyDataSetChanged()
-                    recyclerViewNews?.adapter = adapter1
+        CoroutineScope(Dispatchers.Default).launch {
+            try {
+                val newsPeruRepository = NewsPeruRepository()
+                val newsPeruUseCase = NewsPeruUseCase(requireContext(), newsPeruRepository)
+                val newsPeruRequest = newsPeruUseCase.newsPeru()
+
+                withContext(Dispatchers.Main) {
+                    when (newsPeruRequest) {
+                        is CustomResult.OnSuccess -> {
+                            val data = newsPeruRequest.data
+                            shimmerFrameLayout?.visibility = View.GONE
+                            recyclerViewNews?.visibility = View.VISIBLE
+                            adapter1 = MyNewsAdapter(requireContext(),data)
+                            adapter1.notifyDataSetChanged()
+                            recyclerViewNews?.adapter = adapter1
+
+                        }
+
+                        is CustomResult.OnError -> {
+                            val codeState = SingletonError.code
+                            val titleState = SingletonError.title
+                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
+                                "No data"
+                            } else {
+                                SingletonError.subTitle
+                            }
+                        }
+                    }
                 }
 
+            } catch (e: Exception) {
+
             }
 
-            override fun onFailure(call: Call<MutableList<News>>, t: Throwable) {
-                Log.v(TAG, "Error: ${t.message}")
-                shimmerFrameLayout?.visibility = View.GONE
-            }
-
-        })
+        }
     }
 
 

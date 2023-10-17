@@ -1,4 +1,4 @@
-package devpaul.business.safetylima.domain
+package devpaul.business.safetylima.domain.uitl
 
 object SingletonError {
     var title: String? = null

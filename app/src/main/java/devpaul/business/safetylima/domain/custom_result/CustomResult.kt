@@ -1,6 +1,6 @@
 package devpaul.business.safetylima.domain.custom_result
 
-import devpaul.business.safetylima.domain.SingletonError
+import devpaul.business.safetylima.domain.uitl.SingletonError
 
 sealed class CustomResult<out T> {
     data class OnSuccess<out T>(val data: T) : CustomResult<T>()

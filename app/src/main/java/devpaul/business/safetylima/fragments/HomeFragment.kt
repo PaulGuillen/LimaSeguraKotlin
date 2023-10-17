@@ -25,7 +25,7 @@ import devpaul.business.safetylima.entities.UIT
 
 import devpaul.business.safetylima.providers.DolarUITProvider
 import devpaul.business.safetylima.data.routes.RetrofitService
-import devpaul.business.safetylima.domain.SingletonError
+import devpaul.business.safetylima.domain.uitl.SingletonError
 import devpaul.business.safetylima.domain.custom_result.CustomResult
 import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
 import dmax.dialog.SpotsDialog
