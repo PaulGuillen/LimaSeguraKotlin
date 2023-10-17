@@ -70,8 +70,204 @@ class NewsRepository : NewsRepositoryNetwork {
         }
     }
 
+    override fun getNewsFromColombia(): CustomResult<News> {
+        val serviceTitle = "Error en el MS Colombia News"
+
+        try {
+
+            val callApi = apiConfig?.getDataColombia()?.execute()
+            val response: NewsResponse? = callApi?.body()
+
+            return when (callApi?.isSuccessful) {
+                true -> {
+                    if (response != null)
+                        CustomResult.OnSuccess(NewsMapper().map(response))
+                    else {
+                        CustomResult.OnError(CustomNotFoundError())
+                    }
+
+                }
+
+                false -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi.code(),
+                            title = serviceTitle,
+                            subtitle = callApi.message()
+                        )
+                    )
+                }
+
+                else -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi?.code(),
+                            title = serviceTitle,
+                            subtitle = callApi?.message()
+                        )
+                    )
+                }
+            }
+
+        } catch (ex: Exception) {
+            return CustomResult.OnError(
+                HttpError(
+                    code = 408,
+                    title = serviceTitle,
+                    subtitle = messageTimeOut,
+                )
+            )
+        }
+    }
+
+    override fun getNewsFromCuba(): CustomResult<News> {
+        val serviceTitle = "Error en el MS Cuba News"
+
+        try {
+
+            val callApi = apiConfig?.getDataCuba()?.execute()
+            val response: NewsResponse? = callApi?.body()
+
+            return when (callApi?.isSuccessful) {
+                true -> {
+                    if (response != null)
+                        CustomResult.OnSuccess(NewsMapper().map(response))
+                    else {
+                        CustomResult.OnError(CustomNotFoundError())
+                    }
+
+                }
+
+                false -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi.code(),
+                            title = serviceTitle,
+                            subtitle = callApi.message()
+                        )
+                    )
+                }
+
+                else -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi?.code(),
+                            title = serviceTitle,
+                            subtitle = callApi?.message()
+                        )
+                    )
+                }
+            }
+
+        } catch (ex: Exception) {
+            return CustomResult.OnError(
+                HttpError(
+                    code = 408,
+                    title = serviceTitle,
+                    subtitle = messageTimeOut,
+                )
+            )
+        }
+    }
+
     override fun getNewsFromMexico(): CustomResult<News> {
-        TODO("Not yet implemented")
+        val serviceTitle = "Error en el MS Mexico News"
+
+        try {
+
+            val callApi = apiConfig?.getDataMexico()?.execute()
+            val response: NewsResponse? = callApi?.body()
+
+            return when (callApi?.isSuccessful) {
+                true -> {
+                    if (response != null)
+                        CustomResult.OnSuccess(NewsMapper().map(response))
+                    else {
+                        CustomResult.OnError(CustomNotFoundError())
+                    }
+
+                }
+
+                false -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi.code(),
+                            title = serviceTitle,
+                            subtitle = callApi.message()
+                        )
+                    )
+                }
+
+                else -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi?.code(),
+                            title = serviceTitle,
+                            subtitle = callApi?.message()
+                        )
+                    )
+                }
+            }
+
+        } catch (ex: Exception) {
+            return CustomResult.OnError(
+                HttpError(
+                    code = 408,
+                    title = serviceTitle,
+                    subtitle = messageTimeOut,
+                )
+            )
+        }
+    }
+
+    override fun getNewsFromVenezuela(): CustomResult<News> {
+        val serviceTitle = "Error en el MS Venezuela News"
+
+        try {
+
+            val callApi = apiConfig?.getDataVenezuela()?.execute()
+            val response: NewsResponse? = callApi?.body()
+
+            return when (callApi?.isSuccessful) {
+                true -> {
+                    if (response != null)
+                        CustomResult.OnSuccess(NewsMapper().map(response))
+                    else {
+                        CustomResult.OnError(CustomNotFoundError())
+                    }
+
+                }
+
+                false -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi.code(),
+                            title = serviceTitle,
+                            subtitle = callApi.message()
+                        )
+                    )
+                }
+
+                else -> {
+                    CustomResult.OnError(
+                        HttpError(
+                            code = callApi?.code(),
+                            title = serviceTitle,
+                            subtitle = callApi?.message()
+                        )
+                    )
+                }
+            }
+
+        } catch (ex: Exception) {
+            return CustomResult.OnError(
+                HttpError(
+                    code = 408,
+                    title = serviceTitle,
+                    subtitle = messageTimeOut,
+                )
+            )
+        }
     }
 
 }
