@@ -29,9 +29,10 @@ class MyNewsAdapter(private val context: Context, private val newsList: MutableL
         Glide.with(context).load(newsList[position].imagen).into(holder.image)
         holder.txt_titulo.text = newsList[position].titulo
 
-        if(newsList[position].resumen == null){
-            holder.txt_resumen.text = "El resumen de esta noticia no esta disponible en este momento, lamentamos los incovenientes con los servidores."
-        }else{
+        if (newsList[position].resumen == null) {
+            holder.txt_resumen.text =
+                "El resumen de esta noticia no esta disponible en este momento, lamentamos los incovenientes con los servidores."
+        } else {
             holder.txt_resumen.text = newsList[position].resumen
         }
 
@@ -43,10 +44,10 @@ class MyNewsAdapter(private val context: Context, private val newsList: MutableL
         }
     }
 
-    private fun goToMainUrl(news : NewsPeru){
+    private fun goToMainUrl(news: NewsPeru) {
 
         SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Visitar página oficial?")
-           .setCancelText("Cancelar")
+            .setCancelText("Cancelar")
             .setConfirmText("Si")
             .setConfirmClickListener {
                 val url = news.url

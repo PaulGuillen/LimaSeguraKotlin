@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import devpaul.business.safetylima.R
-import devpaul.business.safetylima.entities.Data
+import devpaul.business.safetylima.data.models.entity.ArticleNews
 
-
-class MyDataAdapter(private val context: Context, private val articlesList: MutableList<Data.Articles>) :
+class MyDataAdapter(private val context: Context, private val articlesList: List<ArticleNews>) :
     RecyclerView.Adapter<MyDataAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,15 +28,16 @@ class MyDataAdapter(private val context: Context, private val articlesList: Muta
 
         val news = articlesList[position]
 
-        if(articlesList[position].content == null){
-            holder.txt_resumen.text = "El resumen de esta noticia no esta disponible en este momento, lamentamos los incovenientes con los servidores."
-        }else{
+        if (articlesList[position].content == null) {
+            holder.txt_resumen.text =
+                "El resumen de esta noticia no esta disponible en este momento, lamentamos los incovenientes con los servidores."
+        } else {
             holder.txt_resumen.text = articlesList[position].content
         }
 
-        if(articlesList[position].description == null){
+        if (articlesList[position].description == null) {
             holder.txt_palsclave.text = "Las palabras claves de esta noticia no se encuentran disponibles en este momento."
-        }else{
+        } else {
             holder.txt_palsclave.text = articlesList[position].description
         }
 
@@ -55,10 +55,10 @@ class MyDataAdapter(private val context: Context, private val articlesList: Muta
         }
     }
 
-    private fun goToMainUrl(articles : Data.Articles){
+    private fun goToMainUrl(articles: ArticleNews) {
 
         SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Visitar página oficial?")
-           .setCancelText("Cancelar")
+            .setCancelText("Cancelar")
             .setConfirmText("Si")
             .setConfirmClickListener {
                 val url = articles.url

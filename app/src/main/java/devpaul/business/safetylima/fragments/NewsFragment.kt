@@ -15,23 +15,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.facebook.shimmer.ShimmerFrameLayout
-
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
 import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
-import devpaul.business.safetylima.data.models.response.NewsResponse
-import devpaul.business.safetylima.data.repository.DollarQuoteRepository
 import devpaul.business.safetylima.data.repository.NewsPeruRepository
+import devpaul.business.safetylima.data.repository.NewsRepository
 import devpaul.business.safetylima.data.routes.RetrofitServiceNewsApart
-import devpaul.business.safetylima.entities.News
 import devpaul.business.safetylima.data.routes.RetrofitService
 import devpaul.business.safetylima.domain.custom_result.CustomResult
 import devpaul.business.safetylima.domain.uitl.SingletonError
-import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
 import devpaul.business.safetylima.domain.usecases.NewsPeruUseCase
+import devpaul.business.safetylima.domain.usecases.NewsUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,15 +37,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 
-class NewsFragment : Fragment() , View.OnClickListener {
+class NewsFragment : Fragment(), View.OnClickListener {
 
     var TAG = "NewsFragment"
 
     var myView: View? = null
-    lateinit var  mService : RetrofitService
-    lateinit var  adapter1 : MyNewsAdapter
+    lateinit var mService: RetrofitService
+    lateinit var adapter1: MyNewsAdapter
     var recyclerViewNews: RecyclerView? = null
-    var shimmerFrameLayout : ShimmerFrameLayout? = null
+    var shimmerFrameLayout: ShimmerFrameLayout? = null
 
 
     //NewsFragment
@@ -58,12 +54,12 @@ class NewsFragment : Fragment() , View.OnClickListener {
 
 
     //Buttons
-    var btnDePeru : CardView ? = null
-    var btnArgentina : CardView ? = null
-    var btnColombia : CardView ? = null
-    var btnCuba : CardView ? = null
-    var btnMexico : CardView ? = null
-    var btnVenezuela : CardView ? = null
+    var btnDePeru: CardView? = null
+    var btnArgentina: CardView? = null
+    var btnColombia: CardView? = null
+    var btnCuba: CardView? = null
+    var btnMexico: CardView? = null
+    var btnVenezuela: CardView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -110,152 +106,114 @@ class NewsFragment : Fragment() , View.OnClickListener {
     }
 
     // Validating data
-    private fun validationDePeru(){
-        if (isOnline()){
+    private fun validationDePeru() {
+        if (isOnline()) {
             getAllNewsList()
-        } else{
+        } else {
             getConnectionValidation()
         }
 
     }
 
-    private fun validationArgentina(){
-        if (isOnline()){
+    private fun validationArgentina() {
+        if (isOnline()) {
             getArgentinaNews()
-        } else{
+        } else {
             getConnectionValidation()
         }
     }
 
-    private fun validationColombia(){
-        if (isOnline()){
+    private fun validationColombia() {
+        if (isOnline()) {
             getColombiaNews()
-        } else{
+        } else {
             getConnectionValidation()
         }
     }
 
-    private fun validationCuba(){
-        if (isOnline()){
+    private fun validationCuba() {
+        if (isOnline()) {
             getCubaNews()
-        } else{
+        } else {
             getConnectionValidation()
         }
     }
 
-    private fun validationMexico(){
-        if (isOnline()){
+    private fun validationMexico() {
+        if (isOnline()) {
             getMexicoNews()
-        } else{
+        } else {
             getConnectionValidation()
         }
     }
 
-    private fun validationVenezuela(){
-        if (isOnline()){
+    private fun validationVenezuela() {
+        if (isOnline()) {
             getVenezuelaNews()
-        } else{
+        } else {
             getConnectionValidation()
         }
     }
 
 
-    // Get data news as a mutable list
     private fun getVenezuelaNews() {
-        mService2.getDataVenezuela().enqueue(object : Callback<Data?> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
-                shimmerFrameLayout?.visibility = View.GONE
-                recyclerViewNews?.visibility = View.VISIBLE
-                val jsonResponse: Data? = response.body()
-                /*          adapter = MyDataAdapter(requireContext(), response.body() as MutableList<Data.Articles>)*/
-                val data2 = jsonResponse?.articles as MutableList<Data.Articles>
-                /*  val data = ArrayList(listOf(jsonResponse?.items))*/
-                adapter2 = MyDataAdapter(requireContext(), data2)
-                recyclerViewNews?.adapter = adapter2
-                adapter2.notifyDataSetChanged()
-            }
 
-            override fun onFailure(call: Call<Data?>, t: Throwable) {
-                shimmerFrameLayout?.visibility = View.GONE
-                Log.d(TAG, t.message!!)
-            }
-        })
 
     }
 
     private fun getMexicoNews() {
-        mService2.getDataMexico().enqueue(object : Callback<Data?> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
-                shimmerFrameLayout?.visibility = View.GONE
-                recyclerViewNews?.visibility = View.VISIBLE
-                val jsonResponse: Data? = response.body()
-                /*          adapter = MyDataAdapter(requireContext(), response.body() as MutableList<Data.Articles>)*/
-                val data2 = jsonResponse?.articles as MutableList<Data.Articles>
-                /*  val data = ArrayList(listOf(jsonResponse?.items))*/
-                adapter2 = MyDataAdapter(requireContext(), data2)
-                recyclerViewNews?.adapter = adapter2
-                adapter2.notifyDataSetChanged()
-            }
 
-            override fun onFailure(call: Call<Data?>, t: Throwable) {
-                shimmerFrameLayout?.visibility = View.GONE
-                Log.d(TAG, t.message!!)
-            }
-        })
 
     }
 
     private fun getCubaNews() {
-        mService2.getDataCuba().enqueue(object : Callback<Data?> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
-                shimmerFrameLayout?.visibility = View.GONE
-                recyclerViewNews?.visibility = View.VISIBLE
-                val jsonResponse: Data? = response.body()
-                /*          adapter = MyDataAdapter(requireContext(), response.body() as MutableList<Data.Articles>)*/
-                val data2 = jsonResponse?.articles as MutableList<Data.Articles>
-                /*  val data = ArrayList(listOf(jsonResponse?.items))*/
-                adapter2 = MyDataAdapter(requireContext(), data2)
-                recyclerViewNews?.adapter = adapter2
-                adapter2.notifyDataSetChanged()
-            }
 
-            override fun onFailure(call: Call<Data?>, t: Throwable) {
-                shimmerFrameLayout?.visibility = View.GONE
-                Log.d(TAG, t.message!!)
-            }
-        })
 
     }
 
     private fun getColombiaNews() {
-        mService2.getDataColombia().enqueue(object : Callback<Data?> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
-                shimmerFrameLayout?.visibility = View.GONE
-                recyclerViewNews?.visibility = View.VISIBLE
-                val jsonResponse: Data? = response.body()
-                /*          adapter = MyDataAdapter(requireContext(), response.body() as MutableList<Data.Articles>)*/
-                val data2 = jsonResponse?.articles as MutableList<Data.Articles>
-                /*  val data = ArrayList(listOf(jsonResponse?.items))*/
-                adapter2 = MyDataAdapter(requireContext(), data2)
-                recyclerViewNews?.adapter = adapter2
-                adapter2.notifyDataSetChanged()
-            }
 
-            override fun onFailure(call: Call<Data?>, t: Throwable) {
-                shimmerFrameLayout?.visibility = View.GONE
-                Log.d(TAG, t.message!!)
-            }
-        })
 
     }
 
     private fun getArgentinaNews() {
 
+        CoroutineScope(Dispatchers.Default).launch {
+            try {
+                val newsArgentinaRepository = NewsRepository()
+                val newsArgentinaUseCase = NewsUseCase(requireContext(), newsArgentinaRepository)
+                val newsArgentinaRequest = newsArgentinaUseCase.newsFromArgentina()
 
+                withContext(Dispatchers.Main) {
+                    when (newsArgentinaRequest) {
+                        is CustomResult.OnSuccess -> {
+                            val data = newsArgentinaRequest.data
+                            val dataInList = data.articles
+                            shimmerFrameLayout?.visibility = View.GONE
+                            recyclerViewNews?.visibility = View.VISIBLE
+                            adapter2 = MyDataAdapter(requireContext(), dataInList)
+                            adapter2.notifyDataSetChanged()
+                            recyclerViewNews?.adapter = adapter2
+
+                        }
+
+                        is CustomResult.OnError -> {
+                            val codeState = SingletonError.code
+                            val titleState = SingletonError.title
+                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
+                                "No data"
+                            } else {
+                                SingletonError.subTitle
+                            }
+                        }
+                    }
+                }
+
+            } catch (e: Exception) {
+
+            }
+
+        }
     }
 
     private fun getAllNewsList() {
@@ -272,7 +230,7 @@ class NewsFragment : Fragment() , View.OnClickListener {
                             val data = newsPeruRequest.data
                             shimmerFrameLayout?.visibility = View.GONE
                             recyclerViewNews?.visibility = View.VISIBLE
-                            adapter1 = MyNewsAdapter(requireContext(),data)
+                            adapter1 = MyNewsAdapter(requireContext(), data)
                             adapter1.notifyDataSetChanged()
                             recyclerViewNews?.adapter = adapter1
 
@@ -345,9 +303,9 @@ class NewsFragment : Fragment() , View.OnClickListener {
     override fun onStart() {
         super.onStart()
 
-        if (isOnline()){
+        if (isOnline()) {
             getAllNewsList()
-        } else{
+        } else {
             getConnectionValidation()
         }
 
