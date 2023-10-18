@@ -197,6 +197,27 @@
                 android:layout_height="3dp"
                 android:background="#DFDFDF" />
 
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/cardview_dollar_quote_shime" />
+
+                    <include layout="@layout/cardview_uit_shime" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <include
                 android:id="@+id/includeCardViewDollarQuote"
                 layout="@layout/cardview_dollar_quote" />

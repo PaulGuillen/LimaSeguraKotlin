@@ -22,18 +22,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
-import java.util.*
+
 
 class HomeFragment : BaseFragmentModule() {
 
     private var binding: FragmentHomeBinding? = null
+    private var isDollarServiceFinished = false
+    private var isUITServiceFinished = false
 
-    @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding?.root
 
@@ -67,6 +67,10 @@ class HomeFragment : BaseFragmentModule() {
                 withContext(Dispatchers.Main) {
                     when (dollarQuoteRequest) {
                         is CustomResult.OnSuccess -> {
+
+                            isDollarServiceFinished = true
+                            checkShimmerVisibility()
+
                             val data = dollarQuoteRequest.data
                             val purchaseValue = data.Cotizacion[0].compra
                             val saleValue = data.Cotizacion[0].venta
@@ -100,6 +104,10 @@ class HomeFragment : BaseFragmentModule() {
                         }
 
                         is CustomResult.OnError -> {
+
+                            isDollarServiceFinished = true
+                            checkShimmerVisibility()
+
                             val codeState = SingletonError.code
                             val titleState = SingletonError.title
                             val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
@@ -112,9 +120,9 @@ class HomeFragment : BaseFragmentModule() {
                 }
 
             } catch (e: Exception) {
-
+                isDollarServiceFinished = true
+                checkShimmerVisibility()
             }
-
         }
     }
 
@@ -132,12 +140,17 @@ class HomeFragment : BaseFragmentModule() {
                             val data = uitRequest.data
                             val valueUIT = data.UIT
                             val periodUIT = data.periodo
+                            val siteUIT = data.sitio
                             val linkToDePeru = data.enlace
+
+                            isUITServiceFinished = true
+                            checkShimmerVisibility()
 
                             binding?.includeCardViewUIT?.valueUIT?.text = valueUIT.toString()
                             binding?.includeCardViewUIT?.periodUIT?.text = periodUIT.toString()
+                            binding?.includeCardViewUIT?.siteUIT?.text = siteUIT
 
-                            binding?.includeCardViewUIT?.cardviewUIT?.setOnClickListener {
+                            binding?.includeCardViewUIT?.cardViewUIT?.setOnClickListener {
                                 if (!linkToDePeru.isNullOrBlank()) {
                                     SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
                                         .setCancelText("Cancelar")
@@ -154,10 +167,13 @@ class HomeFragment : BaseFragmentModule() {
 
                                 }
                             }
-
                         }
 
                         is CustomResult.OnError -> {
+
+                            isUITServiceFinished = true
+                            checkShimmerVisibility()
+
                             val codeState = SingletonError.code
                             val titleState = SingletonError.title
                             val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
@@ -170,12 +186,29 @@ class HomeFragment : BaseFragmentModule() {
                 }
 
             } catch (e: Exception) {
-
+                isUITServiceFinished = true
+                checkShimmerVisibility()
             }
-
         }
     }
 
+    private fun checkShimmerVisibility() {
+        if (isDollarServiceFinished && isUITServiceFinished) {
+            binding?.shimmerFrameLayout?.visibility = View.GONE
+            binding?.includeCardViewDollarQuote?.cardViewQuoteDollar?.visibility = View.VISIBLE
+            binding?.includeCardViewUIT?.cardViewUIT?.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding?.shimmerFrameLayout?.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding?.shimmerFrameLayout?.startShimmerAnimation()
+    }
 
 }
 
