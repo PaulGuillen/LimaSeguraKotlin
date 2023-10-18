@@ -1,7 +1,6 @@
 package devpaul.business.safetylima.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.StationAdapter
 import devpaul.business.safetylima.entities.Station
+import devpaul.business.safetylima.lifecycle.BaseFragmentModule
 
-class StationFragment : Fragment() {
+class StationFragment : BaseFragmentModule() {
 
-    var TAG = "StationFragment"
     var myView: View? = null
 
     private var recyclerViewStation: RecyclerView? = null
@@ -21,10 +20,10 @@ class StationFragment : Fragment() {
     private var stationAdapter: StationAdapter? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        myView =  inflater.inflate(R.layout.fragment_station, container, false)
+        myView = inflater.inflate(R.layout.fragment_station, container, false)
 
         recyclerViewStation = myView?.findViewById(R.id.recyclerView)
         recyclerViewStation?.layoutManager = LinearLayoutManager(requireContext())
@@ -33,9 +32,9 @@ class StationFragment : Fragment() {
         recyclerViewStation?.adapter = stationAdapter
 
 
-        stationList.add(Station("Bombero", R.drawable.ic_fireplace,"bombero"))
-        stationList.add(Station("Policía", R.drawable.ic_local_police,"policia"))
-        stationList.add(Station("Serenazgo", R.drawable.ic_serenazgo,"serenazgo"))
+        stationList.add(Station("Bombero", R.drawable.ic_fireplace, "bombero"))
+        stationList.add(Station("Policía", R.drawable.ic_local_police, "policia"))
+        stationList.add(Station("Serenazgo", R.drawable.ic_serenazgo, "serenazgo"))
 
         stationAdapter?.setDataList(stationList)
 

@@ -1,6 +1,5 @@
 package devpaul.business.safetylima.fragments
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -22,7 +21,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
-
 
 class HomeFragment : BaseFragmentModule() {
 
@@ -52,10 +50,6 @@ class HomeFragment : BaseFragmentModule() {
         return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
 
     private fun getQuoteDollar() {
         CoroutineScope(Dispatchers.Default).launch {
@@ -208,6 +202,11 @@ class HomeFragment : BaseFragmentModule() {
     override fun onPause() {
         super.onPause()
         binding?.shimmerFrameLayout?.startShimmerAnimation()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 }

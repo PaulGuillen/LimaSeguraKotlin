@@ -1,8 +1,4 @@
 
-o
-?app/src/main/java/devpaul/business/safetylima/entities/Dolar.kt,3\d\3d92190e16da85f8e5b2590f212ff7ce0cb1636f
-{
-Kapp/src/main/java/devpaul/business/safetylima/providers/DolarUITProvider.kt,9\e\9e01cfa8cdb713100cac6f301683959f4ffa9aa9
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 w
@@ -21,8 +17,6 @@ x
 Happ/src/main/java/devpaul/business/safetylima/entities/ViewAllSection.kt,b\c\bc9ff95090d2cc23effa6202cc99b3a74fb74c0c
 ‘
 aapp/src/main/java/devpaul/business/safetylima/activities/category/sections/DetailedAllActivity.kt,3\2\32ca50b16cce20146e7a24ea653d9e060fb03545
-n
->app/src/main/java/devpaul/business/safetylima/entities/Data.kt,6\8\68744fc0739bef0ced95b3840613edbc0a247440
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
 <
@@ -94,3 +88,19 @@ w
 Gapp/src/main/java/devpaul/business/safetylima/adapter/ViewAllAdapter.kt,4\c\4c5c727a3ff422efcbfd2b98a4b55e5d80d3bf54
 …
 Uapp/src/main/java/devpaul/business/safetylima/activities/category/CategoryActivity.kt,6\4\64f15d5b4b6e5f3a61a4d08eee41aa7e72ab3c3a
+
+Qapp/src/main/java/devpaul/business/safetylima/data/models/response/UITResponse.kt,7\2\72f72ae5344826c83f0a9bdddfcd1e86e3c95397
+y
+Iapp/src/main/java/devpaul/business/safetylima/domain/mappers/UITMapper.kt,7\9\79df02d0ed66a03a18010fd4f8b0895da9e9a3c9
+{
+Kapp/src/main/java/devpaul/business/safetylima/domain/usecases/UITUseCase.kt,c\c\cca37077ae74b6743d3bd61d46f997d462448726
+’
+bapp/src/main/java/devpaul/business/safetylima/domain/interfaces/repository/UITRepositoryNetwork.kt,7\f\7f33fb0cf7b1b019d4c30449d4629fa7fe1c0cff
+~
+Napp/src/main/java/devpaul/business/safetylima/data/repository/UITRepository.kt,0\a\0afe1981d40357c56ef0c87e397ee7928ed4f498
+}
+Mapp/src/main/java/devpaul/business/safetylima/lifecycle/BaseFragmentModule.kt,3\c\3c35b33e9d9ef2fa1793d72e0d78efd396aae9e7
+~
+Napp/src/main/java/devpaul/business/safetylima/lifecycle/EmptyDialogFragment.kt,e\c\ec00146de60a47e36f452ea4a61d833f301f385a
+w
+Gapp/src/main/java/devpaul/business/safetylima/data/models/entity/UIT.kt,9\e\9e530dee32da959085a69bbb240423b3db7c4030

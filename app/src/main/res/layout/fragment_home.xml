@@ -197,7 +197,6 @@
                 android:layout_height="3dp"
                 android:background="#DFDFDF" />
 
-
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerFrameLayout"
                 android:layout_width="match_parent"
