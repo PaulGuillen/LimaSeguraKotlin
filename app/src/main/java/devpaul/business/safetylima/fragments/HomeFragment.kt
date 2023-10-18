@@ -11,13 +11,14 @@ import devpaul.business.safetylima.activities.settings.SettingsActivity
 import devpaul.business.safetylima.data.repository.DollarQuoteRepository
 import devpaul.business.safetylima.data.repository.UITRepository
 import devpaul.business.safetylima.databinding.FragmentHomeBinding
-import devpaul.business.safetylima.domain.uitl.SingletonError
+import devpaul.business.safetylima.domain.util.SingletonError
 import devpaul.business.safetylima.domain.custom_result.CustomResult
 import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
 import devpaul.business.safetylima.domain.usecases.UITUseCase
 import devpaul.business.safetylima.lifecycle.BaseFragmentModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
@@ -50,13 +51,15 @@ class HomeFragment : BaseFragmentModule() {
         return view
     }
 
-
     private fun getQuoteDollar() {
         CoroutineScope(Dispatchers.Default).launch {
             try {
                 val dollarQuoteRepository = DollarQuoteRepository()
                 val dollarUseCase = DollarQuoteUseCase(requireContext(), dollarQuoteRepository)
                 val dollarQuoteRequest = dollarUseCase.dollarQuote()
+
+
+                delay(5000)
 
                 withContext(Dispatchers.Main) {
                     when (dollarQuoteRequest) {
@@ -127,6 +130,8 @@ class HomeFragment : BaseFragmentModule() {
                 val uitRepository = UITRepository()
                 val uitUseCase = UITUseCase(requireContext(), uitRepository)
                 val uitRequest = uitUseCase.dataUIT()
+
+                delay(3000)
 
                 withContext(Dispatchers.Main) {
                     when (uitRequest) {

@@ -1,4 +1,4 @@
-package devpaul.business.safetylima.domain.uitl
+package devpaul.business.safetylima.domain.util
 
 import androidx.cardview.widget.CardView
 

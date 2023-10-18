@@ -13,10 +13,6 @@
         android:theme="@style/Theme.SafetyLima">
 
         <activity
-            android:name=".totest.MainActivity7"
-            android:exported="false" />
-
-        <activity
             android:name=".activities.register.TwitterActivity"
             android:exported="false" />
         <activity

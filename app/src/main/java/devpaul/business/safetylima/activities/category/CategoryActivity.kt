@@ -3,7 +3,6 @@ package devpaul.business.safetylima.activities.category
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,10 +11,11 @@ import devpaul.business.safetylima.fragments.DistrictFragment
 import devpaul.business.safetylima.fragments.HomeFragment
 import devpaul.business.safetylima.fragments.NewsFragment
 import devpaul.business.safetylima.fragments.StationFragment
+import devpaul.business.safetylima.lifecycle.BaseActivity
 
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : BaseActivity() {
 
-    var bottomNavigation: BottomNavigationView? = null
+    private var bottomNavigation: BottomNavigationView? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {

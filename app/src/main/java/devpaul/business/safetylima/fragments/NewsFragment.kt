@@ -1,11 +1,9 @@
 package devpaul.business.safetylima.fragments
 
-import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import devpaul.business.safetylima.R
@@ -15,13 +13,14 @@ import devpaul.business.safetylima.data.repository.NewsPeruRepository
 import devpaul.business.safetylima.data.repository.NewsRepository
 import devpaul.business.safetylima.databinding.FragmentNewsBinding
 import devpaul.business.safetylima.domain.custom_result.CustomResult
-import devpaul.business.safetylima.domain.uitl.SingletonError
-import devpaul.business.safetylima.domain.uitl.applyButtonSelectionLogic
+import devpaul.business.safetylima.domain.util.SingletonError
+import devpaul.business.safetylima.domain.util.applyButtonSelectionLogic
 import devpaul.business.safetylima.domain.usecases.NewsPeruUseCase
 import devpaul.business.safetylima.domain.usecases.NewsUseCase
 import devpaul.business.safetylima.lifecycle.BaseFragmentModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
@@ -61,211 +60,63 @@ class NewsFragment : BaseFragmentModule() {
             btnPeru, btnArgentina, btnColombia, btnCuba, btnMexico, btnVenezuela
         )
 
+        btnPeru?.setBackgroundColor(grayColor)
+
         applyButtonSelectionLogic(cardViewButtons, grayColor, whiteColor) { button ->
+            cardViewButtons.filter { it != button }.forEach { it?.setBackgroundColor(whiteColor) }
+
             when (button) {
                 btnPeru -> getNewsFromPeru()
-                btnArgentina -> getArgentinaNews()
-                btnColombia -> getColombiaNews()
-                btnCuba -> getCubaNews()
-                btnMexico -> getMexicoNews()
-                btnVenezuela -> getVenezuelaNews()
+                btnArgentina -> getNewsForCountry("Argentina")
+                btnColombia -> getNewsForCountry("Colombia")
+                btnCuba -> getNewsForCountry("Cuba")
+                btnMexico -> getNewsForCountry("Mexico")
+                btnVenezuela -> getNewsForCountry("Venezuela")
             }
         }
     }
 
-    private fun getVenezuelaNews() {
+
+    private fun getNewsForCountry(country: String) {
+        binding?.shimmerFrameLayout?.visibility = View.VISIBLE
+        binding?.recyclerView?.visibility = View.GONE
+
         CoroutineScope(Dispatchers.Default).launch {
             try {
-                val newsVenezuelaRepository = NewsRepository()
-                val newsVenezuelaUseCase = NewsUseCase(requireContext(), newsVenezuelaRepository)
-                val newsVenezuelaRequest = newsVenezuelaUseCase.newsFromVenezuela()
+                val newsRepository = NewsRepository()
+                val newsUseCase = NewsUseCase(requireContext(), newsRepository)
+                val newsRequest = when (country) {
+                    "Venezuela" -> newsUseCase.newsFromVenezuela()
+                    "Mexico" -> newsUseCase.newsFromMexico()
+                    "Cuba" -> newsUseCase.newsFromCuba()
+                    "Colombia" -> newsUseCase.newsFromColombia()
+                    "Argentina" -> newsUseCase.newsFromArgentina()
+                    else -> return@launch
+                }
+
+                delay(5000)
 
                 withContext(Dispatchers.Main) {
-                    when (newsVenezuelaRequest) {
+                    when (newsRequest) {
                         is CustomResult.OnSuccess -> {
-                            val data = newsVenezuelaRequest.data
-                            val dataInList = data.articles
+                            val data = newsRequest.data
+                            val adapter = MyDataAdapter(requireContext(), data.articles)
+                            adapter.notifyDataSetChanged()
+                            binding?.recyclerView?.adapter = adapter
                             binding?.shimmerFrameLayout?.visibility = View.GONE
                             binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter2 = MyDataAdapter(requireContext(), dataInList)
-                            adapter2.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter2
-
                         }
 
                         is CustomResult.OnError -> {
                             val codeState = SingletonError.code
                             val titleState = SingletonError.title
-                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
-                                "No data"
-                            } else {
-                                SingletonError.subTitle
-                            }
+                            val subTitleState = SingletonError.subTitle ?: "No data"
                         }
                     }
                 }
-
             } catch (e: Exception) {
-
+                // Manejar la excepción
             }
-        }
-
-    }
-
-    private fun getMexicoNews() {
-        CoroutineScope(Dispatchers.Default).launch {
-            try {
-                val newsMexicoRepository = NewsRepository()
-                val newsMexicoUseCase = NewsUseCase(requireContext(), newsMexicoRepository)
-                val newsMexicoRequest = newsMexicoUseCase.newsFromMexico()
-
-                withContext(Dispatchers.Main) {
-                    when (newsMexicoRequest) {
-                        is CustomResult.OnSuccess -> {
-                            val data = newsMexicoRequest.data
-                            val dataInList = data.articles
-                            binding?.shimmerFrameLayout?.visibility = View.GONE
-                            binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter2 = MyDataAdapter(requireContext(), dataInList)
-                            adapter2.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter2
-
-                        }
-
-                        is CustomResult.OnError -> {
-                            val codeState = SingletonError.code
-                            val titleState = SingletonError.title
-                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
-                                "No data"
-                            } else {
-                                SingletonError.subTitle
-                            }
-                        }
-                    }
-                }
-
-            } catch (e: Exception) {
-
-            }
-        }
-    }
-
-    private fun getCubaNews() {
-        CoroutineScope(Dispatchers.Default).launch {
-            try {
-                val newsCubaRepository = NewsRepository()
-                val newsCubaUseCase = NewsUseCase(requireContext(), newsCubaRepository)
-                val newsCubaRequest = newsCubaUseCase.newsFromCuba()
-
-                withContext(Dispatchers.Main) {
-                    when (newsCubaRequest) {
-                        is CustomResult.OnSuccess -> {
-                            val data = newsCubaRequest.data
-                            val dataInList = data.articles
-                            binding?.shimmerFrameLayout?.visibility = View.GONE
-                            binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter2 = MyDataAdapter(requireContext(), dataInList)
-                            adapter2.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter2
-
-                        }
-
-                        is CustomResult.OnError -> {
-                            val codeState = SingletonError.code
-                            val titleState = SingletonError.title
-                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
-                                "No data"
-                            } else {
-                                SingletonError.subTitle
-                            }
-                        }
-                    }
-                }
-
-            } catch (e: Exception) {
-
-            }
-        }
-
-    }
-
-    private fun getColombiaNews() {
-        CoroutineScope(Dispatchers.Default).launch {
-            try {
-                val newsColombiaRepository = NewsRepository()
-                val newsColombiaUseCase = NewsUseCase(requireContext(), newsColombiaRepository)
-                val newsColombiaRequest = newsColombiaUseCase.newsFromColombia()
-
-                withContext(Dispatchers.Main) {
-                    when (newsColombiaRequest) {
-                        is CustomResult.OnSuccess -> {
-                            val data = newsColombiaRequest.data
-                            val dataInList = data.articles
-                            binding?.shimmerFrameLayout?.visibility = View.GONE
-                            binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter2 = MyDataAdapter(requireContext(), dataInList)
-                            adapter2.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter2
-
-                        }
-
-                        is CustomResult.OnError -> {
-                            val codeState = SingletonError.code
-                            val titleState = SingletonError.title
-                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
-                                "No data"
-                            } else {
-                                SingletonError.subTitle
-                            }
-                        }
-                    }
-                }
-
-            } catch (e: Exception) {
-
-            }
-
-        }
-
-    }
-
-    private fun getArgentinaNews() {
-
-        CoroutineScope(Dispatchers.Default).launch {
-            try {
-                val newsArgentinaRepository = NewsRepository()
-                val newsArgentinaUseCase = NewsUseCase(requireContext(), newsArgentinaRepository)
-                val newsArgentinaRequest = newsArgentinaUseCase.newsFromArgentina()
-
-                withContext(Dispatchers.Main) {
-                    when (newsArgentinaRequest) {
-                        is CustomResult.OnSuccess -> {
-                            val data = newsArgentinaRequest.data
-                            val dataInList = data.articles
-                            binding?.shimmerFrameLayout?.visibility = View.GONE
-                            binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter2 = MyDataAdapter(requireContext(), dataInList)
-                            adapter2.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter2
-
-                        }
-
-                        is CustomResult.OnError -> {
-                            val codeState = SingletonError.code
-                            val titleState = SingletonError.title
-                            val subTitleState = if (SingletonError.subTitle.isNullOrEmpty()) {
-                                "No data"
-                            } else {
-                                SingletonError.subTitle
-                            }
-                        }
-                    }
-                }
-
-            } catch (e: Exception) {
-
-            }
-
         }
     }
 
@@ -276,6 +127,8 @@ class NewsFragment : BaseFragmentModule() {
                 val newsPeruRepository = NewsPeruRepository()
                 val newsPeruUseCase = NewsPeruUseCase(requireContext(), newsPeruRepository)
                 val newsPeruRequest = newsPeruUseCase.newsPeru()
+
+                delay(5000)
 
                 withContext(Dispatchers.Main) {
                     when (newsPeruRequest) {

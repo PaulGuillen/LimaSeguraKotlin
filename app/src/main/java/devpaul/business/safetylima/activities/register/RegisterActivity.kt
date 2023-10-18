@@ -27,9 +27,10 @@ import devpaul.business.safetylima.MainActivity
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.activities.category.CategoryActivity
 import devpaul.business.safetylima.entities.User
+import devpaul.business.safetylima.lifecycle.BaseActivity
 import java.util.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity() {
 
     var TAG = "RegisterActivity"
 
@@ -47,26 +48,19 @@ class RegisterActivity : AppCompatActivity() {
     private val db = Firebase.firestore
 
     //Button Google
-    var btnGoogle : Button? = null
+    var btnGoogle: Button? = null
     private val RC_SIGN_IN = 777
     private var googleSignInClient: GoogleSignInClient? = null
 
     //Twitter
-    var btnTwitter : Button ? = null
-
-    @Suppress("DEPRECATION")
-    var progressDialog: ProgressDialog? = null
+    var btnTwitter: Button? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        //desactivar rotacion pantalla
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-        @Suppress("DEPRECATION")
-        progressDialog = ProgressDialog(this)
 
         auth = Firebase.auth
         edtName = findViewById(R.id.edt_name)
@@ -109,24 +103,20 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithCredential:success")
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                     goToCategory()
                     ProgressDialogFragment.hideProgressBar(this)
                 } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
 
                 }
             }
     }
-    @Suppress("DEPRECATION")
 
+    @Suppress("DEPRECATION")
     private fun signInWithGoogle() {
         val signInIntent: Intent = googleSignInClient!!.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -139,19 +129,13 @@ class RegisterActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                Log.w(TAG, "Google sign in failed", e)
             }
         }
     }
 
     private fun registerUser() {
-
-        progressDialog!!.show()
-        progressDialog?.setContentView(R.layout.charge_dialog)
-        Objects.requireNonNull(progressDialog!!.window)?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val name = edtName?.text.toString()
         val lastname = edtLastname?.text.toString()
@@ -176,6 +160,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = password
             )
 
+            showLoading()
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -184,21 +169,18 @@ class RegisterActivity : AppCompatActivity() {
                                 .document(uid)
                                 .set(user)
                                 .addOnSuccessListener {
-                                    ProgressDialogFragment.showProgressBar(this)
+                                    hideLoading()
                                     Toast.makeText(baseContext, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                                    progressDialog?.dismiss()
                                     goToCategory()
-                                    ProgressDialogFragment.hideProgressBar(this)
                                 }
                                 .addOnFailureListener { e ->
-                                    progressDialog?.dismiss()
-                                    Log.w(TAG, "Error adding document", e)
+                                    hideLoading()
                                 }
 
                         }
 
                     } else {
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        hideLoading()
                         Toast.makeText(
                             baseContext, "Error en el registro.",
                             Toast.LENGTH_SHORT
@@ -211,7 +193,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun String.isEmailValid(): Boolean {
+    private fun String.isEmailValid(): Boolean {
         return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this)
             .matches()
     }
@@ -264,7 +246,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun goToCategory() {
         val i = Intent(this, CategoryActivity::class.java)
-        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Eliminar el historial de pantallas
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(i)
     }
 
