@@ -76,7 +76,6 @@ class NewsFragment : BaseFragmentModule() {
         }
     }
 
-
     private fun getNewsForCountry(country: String) {
         binding?.shimmerFrameLayout?.visibility = View.VISIBLE
         binding?.recyclerView?.visibility = View.GONE
