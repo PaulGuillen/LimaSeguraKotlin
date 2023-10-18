@@ -1,7 +1,6 @@
 package devpaul.business.safetylima.data.routes
 
 import devpaul.business.safetylima.data.models.response.NewsResponse
-import devpaul.business.safetylima.entities.Data
 import retrofit2.Call
 import retrofit2.http.GET
 

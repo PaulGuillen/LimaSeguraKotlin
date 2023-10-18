@@ -2,7 +2,7 @@ package devpaul.business.safetylima.data.routes
 
 import devpaul.business.safetylima.data.models.response.DollarQuoteResponse
 import devpaul.business.safetylima.data.models.response.NewsPeruResponse
-import devpaul.business.safetylima.entities.UIT
+import devpaul.business.safetylima.data.models.response.UITResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -15,7 +15,6 @@ interface RetrofitService {
     fun dollarQuote(): Call<DollarQuoteResponse>
 
     @GET("uitperu.json")
-    fun getUIT(): Call<UIT>
-
+    fun dataUIT(): Call<UITResponse>
 
 }

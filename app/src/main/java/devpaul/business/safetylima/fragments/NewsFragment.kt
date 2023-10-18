@@ -18,12 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import devpaul.business.safetylima.R
 import devpaul.business.safetylima.adapter.MyNewsAdapter
-import devpaul.business.safetylima.entities.Data
 import devpaul.business.safetylima.adapter.MyDataAdapter
 import devpaul.business.safetylima.data.repository.NewsPeruRepository
 import devpaul.business.safetylima.data.repository.NewsRepository
-import devpaul.business.safetylima.data.routes.RetrofitServiceNewsApart
-import devpaul.business.safetylima.data.routes.RetrofitService
 import devpaul.business.safetylima.domain.custom_result.CustomResult
 import devpaul.business.safetylima.domain.uitl.SingletonError
 import devpaul.business.safetylima.domain.usecases.NewsPeruUseCase
@@ -32,9 +29,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
 
 class NewsFragment : Fragment(), View.OnClickListener {

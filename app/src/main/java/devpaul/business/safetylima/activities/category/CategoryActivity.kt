@@ -28,36 +28,19 @@ class CategoryActivity : AppCompatActivity() {
         openFragment(HomeFragment())
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
-        bottomNavigation?.setOnItemSelectedListener {
-
-            when (it.itemId) {
-
-                R.id.item_inicio -> {
-                    openFragment(HomeFragment())
-                    true
-                }
-
-                R.id.item_noticia -> {
-                    openFragment(NewsFragment())
-                    true
-                }
-
-                R.id.item_estacion -> {
-                    openFragment(StationFragment())
-                    true
-                }
-
-
-                R.id.item_distrito -> {
-                    openFragment(DistrictFragment())
-                    true
-                }
-
-                else -> false
-
+        bottomNavigation?.setOnItemSelectedListener { item ->
+            val fragment: Fragment = when (item.itemId) {
+                R.id.item_inicio -> HomeFragment()
+                R.id.item_noticia -> NewsFragment()
+                R.id.item_estacion -> StationFragment()
+                R.id.item_distrito -> DistrictFragment()
+                else -> HomeFragment()
             }
 
+            openFragment(fragment)
+            true
         }
+
     }
 
     private fun openFragment(fragment: Fragment) {
@@ -66,7 +49,6 @@ class CategoryActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 
     override fun onBackPressed() {
         val a = Intent(Intent.ACTION_MAIN)
