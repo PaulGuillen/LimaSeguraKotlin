@@ -11,8 +11,8 @@ android {
         applicationId "devpaul.business.safetylima"
         minSdk 23
         targetSdk 33
-        versionCode 21
-        versionName "2.31"
+        versionCode 22
+        versionName "2.32"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,8 +30,9 @@ android {
         release {
             debuggable true
             signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
     compileOptions {

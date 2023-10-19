@@ -85,7 +85,19 @@ class HomeFragment : BaseFragmentModule() {
 
                             binding?.includeCardViewDollarQuote?.cardViewQuoteDollar?.setOnClickListener {
                                 if (!link.isNullOrBlank()) {
-                                    showDialogGoToPage(requireContext(), link)
+                                    SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
+                                        .setCancelText("Cancelar")
+                                        .setConfirmText("Si")
+                                        .setConfirmClickListener {
+                                            val i = Intent(Intent.ACTION_VIEW)
+                                            i.data = Uri.parse(link)
+                                            startActivity(i)
+                                            it.dismiss()
+                                        }
+                                        .showCancelButton(true).setCancelClickListener { sDialog ->
+                                            sDialog.cancel()
+                                        }.show()
+                                    //showDialogGoToPage(requireContext(), link)
                                 }
                             }
                         }
@@ -141,7 +153,19 @@ class HomeFragment : BaseFragmentModule() {
 
                             binding?.includeCardViewUIT?.cardViewUIT?.setOnClickListener {
                                 if (!link.isNullOrBlank()) {
-                                    showDialogGoToPage(requireContext(), link)
+                                    SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
+                                        .setCancelText("Cancelar")
+                                        .setConfirmText("Si")
+                                        .setConfirmClickListener {
+                                            val i = Intent(Intent.ACTION_VIEW)
+                                            i.data = Uri.parse(link)
+                                            startActivity(i)
+                                            it.dismiss()
+                                        }
+                                        .showCancelButton(true).setCancelClickListener { sDialog ->
+                                            sDialog.cancel()
+                                        }.show()
+                                    //   showDialogGoToPage(requireContext(), link)
                                 }
                             }
                         }
