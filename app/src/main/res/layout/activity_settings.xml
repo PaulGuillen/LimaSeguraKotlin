@@ -147,7 +147,7 @@
                         android:layout_height="22dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="0.28"
-                        android:src="@drawable/exclamacion" />
+                        android:src="@drawable/baseline_insert_chart_24" />
 
                     <TextView
 

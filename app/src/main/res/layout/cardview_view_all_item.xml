@@ -16,10 +16,10 @@
         <ImageView
             android:id="@+id/view_img"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:contentDescription="image_cardview_all_item"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@drawable/bombero" />
 
         <View
@@ -78,7 +78,6 @@
                 android:id="@+id/inicial_station"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
-
 
         </LinearLayout>
 
