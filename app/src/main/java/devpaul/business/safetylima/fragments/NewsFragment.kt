@@ -27,9 +27,6 @@ import java.lang.Exception
 
 class NewsFragment : BaseFragmentModule() {
 
-    lateinit var adapter1: MyNewsAdapter
-    lateinit var adapter2: MyDataAdapter
-
     private var binding: FragmentNewsBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -133,12 +130,11 @@ class NewsFragment : BaseFragmentModule() {
                     when (newsPeruRequest) {
                         is CustomResult.OnSuccess -> {
                             val data = newsPeruRequest.data
+                            val adapter = MyNewsAdapter(requireContext(), data)
+                            adapter.notifyDataSetChanged()
+                            binding?.recyclerView?.adapter = adapter
                             binding?.shimmerFrameLayout?.visibility = View.GONE
                             binding?.recyclerView?.visibility = View.VISIBLE
-                            adapter1 = MyNewsAdapter(requireContext(), data)
-                            adapter1.notifyDataSetChanged()
-                            binding?.recyclerView?.adapter = adapter1
-
                         }
 
                         is CustomResult.OnError -> {

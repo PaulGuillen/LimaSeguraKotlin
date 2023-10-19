@@ -3,11 +3,13 @@ package devpaul.business.safetylima.activities.settings
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.pm.PackageInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -24,8 +26,8 @@ class SettingsActivity : AppCompatActivity() {
     private var cShare: ConstraintLayout? = null
     private var logoemergencies: ImageView? = null
     private lateinit var auth: FirebaseAuth
-
-    var btnLogout : Button ? = null
+    var versionText: TextView? = null
+    var btnLogout: Button? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,14 @@ class SettingsActivity : AppCompatActivity() {
         cPolicy = findViewById(R.id.clinearlayout_policy)
         cShare = findViewById(R.id.clinearlayout_share)
         logoemergencies = findViewById(R.id.logo_emergency)
+        versionText = findViewById(R.id.version)
+
+        val packageInfo: PackageInfo = packageManager.getPackageInfo(packageName, 0)
+        val versionName = packageInfo.versionName
+
+        versionText?.text = "Version $versionName"
+
+
         btnLogout = findViewById(R.id.btn_salir)
         btnLogout?.setOnClickListener {
             auth.signOut()
@@ -75,7 +85,6 @@ class SettingsActivity : AppCompatActivity() {
                 Uri.parse("https://paulguillen.github.io/Politicas-Privacidad/")
             startActivity(openURL)
         }
-
 
 
     }
