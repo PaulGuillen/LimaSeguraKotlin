@@ -15,12 +15,14 @@ import devpaul.business.safetylima.domain.util.SingletonError
 import devpaul.business.safetylima.domain.custom_result.CustomResult
 import devpaul.business.safetylima.domain.usecases.DollarQuoteUseCase
 import devpaul.business.safetylima.domain.usecases.UITUseCase
+import devpaul.business.safetylima.domain.util.showDialogGoToPage
 import devpaul.business.safetylima.lifecycle.BaseFragmentModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import java.lang.Exception
 
 class HomeFragment : BaseFragmentModule() {
@@ -69,9 +71,10 @@ class HomeFragment : BaseFragmentModule() {
                             checkShimmerVisibility()
 
                             val data = dollarQuoteRequest.data
+                            Timber.d("HomeFragmentResponse : $data")
                             val purchaseValue = data.Cotizacion[0].compra
                             val saleValue = data.Cotizacion[0].venta
-                            val linkToDePeru = data.enlace
+                            val link = data.enlace
                             val site = data.sitio
                             val date = data.fecha
 
@@ -81,23 +84,10 @@ class HomeFragment : BaseFragmentModule() {
                             binding?.includeCardViewDollarQuote?.dateQuote?.text = date
 
                             binding?.includeCardViewDollarQuote?.cardViewQuoteDollar?.setOnClickListener {
-                                if (!linkToDePeru.isNullOrBlank()) {
-                                    SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
-                                        .setCancelText("Cancelar")
-                                        .setConfirmText("Si")
-                                        .setConfirmClickListener {
-                                            val i = Intent(Intent.ACTION_VIEW)
-                                            i.data = Uri.parse(linkToDePeru)
-                                            startActivity(i)
-                                            it.dismiss()
-                                        }
-                                        .showCancelButton(true).setCancelClickListener { sDialog ->
-                                            sDialog.cancel()
-                                        }.show()
-
+                                if (!link.isNullOrBlank()) {
+                                    showDialogGoToPage(requireContext(), link)
                                 }
                             }
-
                         }
 
                         is CustomResult.OnError -> {
@@ -140,7 +130,7 @@ class HomeFragment : BaseFragmentModule() {
                             val valueUIT = data.UIT
                             val periodUIT = data.periodo
                             val siteUIT = data.sitio
-                            val linkToDePeru = data.enlace
+                            val link = data.enlace
 
                             isUITServiceFinished = true
                             checkShimmerVisibility()
@@ -150,20 +140,8 @@ class HomeFragment : BaseFragmentModule() {
                             binding?.includeCardViewUIT?.siteUIT?.text = siteUIT
 
                             binding?.includeCardViewUIT?.cardViewUIT?.setOnClickListener {
-                                if (!linkToDePeru.isNullOrBlank()) {
-                                    SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE).setTitleText("Ver página oficial?")
-                                        .setCancelText("Cancelar")
-                                        .setConfirmText("Si")
-                                        .setConfirmClickListener {
-                                            val i = Intent(Intent.ACTION_VIEW)
-                                            i.data = Uri.parse(linkToDePeru)
-                                            startActivity(i)
-                                            it.dismiss()
-                                        }
-                                        .showCancelButton(true).setCancelClickListener { sDialog ->
-                                            sDialog.cancel()
-                                        }.show()
-
+                                if (!link.isNullOrBlank()) {
+                                    showDialogGoToPage(requireContext(), link)
                                 }
                             }
                         }

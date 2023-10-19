@@ -17,8 +17,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('../jks/safetyLima.jks')
+            storePassword 'PaulGuillen123'
+            keyAlias 'pguillena'
+            keyPassword 'PaulGuillen123'
+        }
+    }
+
     buildTypes {
         release {
+            debuggable true
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -54,25 +65,28 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
     implementation 'com.github.tommasoberlose:progress-dialog:1.0.0'
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
-    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 
     //  Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
 
     //  Gson
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation "com.google.code.gson:gson:2.10.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
     //  Glide
-    implementation("com.github.bumptech.glide:glide:4.14.2")
+    implementation "com.github.bumptech.glide:glide:4.14.2"
 
     //  Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
     //  Timber = Logs
-    implementation("com.jakewharton.timber:timber:4.7.1")
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    //  Dialog library
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
 }

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,9 +16,9 @@
 
         <ProgressBar
             style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
-            android:indeterminateDrawable="@drawable/progress_bar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progress_bar" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +27,7 @@
             android:fontFamily="@font/monserrat_alternates_medium"
             android:text="Cargando"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

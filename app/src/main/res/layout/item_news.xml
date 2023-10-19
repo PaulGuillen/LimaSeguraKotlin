@@ -18,61 +18,61 @@
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:layout_gravity="center"
+            android:background="@drawable/ic_newspaper"
             android:contentDescription="@string/news_card"
-            android:scaleType="fitXY"
-            android:background="@drawable/ic_newspaper" />
+            android:scaleType="fitXY" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/monserrat_alternates_medium"
                 android:ellipsize="end"
+                android:fontFamily="@font/monserrat_alternates_medium"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:singleLine="true"
-                android:maxLines="1"
-                android:textColor="@color/black"
                 android:text="@string/titulo_noticias"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/resumen"
                 android:layout_width="match_parent"
-                android:padding="5dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/monserrat_alternates_medium"
                 android:ellipsize="end"
+                android:fontFamily="@font/monserrat_alternates_medium"
                 android:maxLines="1"
+                android:padding="5dp"
                 android:singleLine="true"
                 android:text="@string/resumen_noticias" />
 
             <TextView
                 android:id="@+id/palsclave"
                 android:layout_width="match_parent"
-                android:padding="5dp"
-                android:fontFamily="@font/monserrat_alternates_medium"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="@font/monserrat_alternates_medium"
                 android:maxLines="1"
+                android:padding="5dp"
                 android:singleLine="true"
                 android:text="@string/palabras_clave_noticias" />
 
             <TextView
                 android:id="@+id/fecha"
                 android:layout_width="match_parent"
-                android:fontFamily="@font/monserrat_alternates_medium"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="@font/monserrat_alternates_medium"
                 android:maxLines="1"
                 android:padding="10dp"
-                android:textAlignment="textEnd"
                 android:singleLine="true"
-                android:text="@string/fecha_noticias" />
+                android:text="@string/fecha_noticias"
+                android:textAlignment="textEnd" />
 
         </LinearLayout>
 
