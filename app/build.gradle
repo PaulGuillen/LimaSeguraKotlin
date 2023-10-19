@@ -11,8 +11,8 @@ android {
         applicationId "devpaul.business.safetylima"
         minSdk 23
         targetSdk 33
-        versionCode 6
-        versionName "2.24"
+        versionCode 20
+        versionName "2.30"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
