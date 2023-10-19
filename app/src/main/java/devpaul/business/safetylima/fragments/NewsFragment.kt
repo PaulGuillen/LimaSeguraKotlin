@@ -28,6 +28,8 @@ import java.lang.Exception
 class NewsFragment : BaseFragmentModule() {
 
     private var binding: FragmentNewsBinding? = null
+    private var isPressed = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentNewsBinding.inflate(inflater, container, false)
@@ -43,6 +45,7 @@ class NewsFragment : BaseFragmentModule() {
     }
 
     private fun selectItemsNews() {
+        isPressed = true
         val grayColor = ContextCompat.getColor(requireContext(), R.color.mid_gray_card)
         val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
 
@@ -90,7 +93,7 @@ class NewsFragment : BaseFragmentModule() {
                     else -> return@launch
                 }
 
-                delay(5000)
+                delay(4000)
 
                 withContext(Dispatchers.Main) {
                     when (newsRequest) {
@@ -117,6 +120,10 @@ class NewsFragment : BaseFragmentModule() {
     }
 
     private fun getNewsFromPeru() {
+        if (isPressed) {
+            binding?.shimmerFrameLayout?.visibility = View.VISIBLE
+            binding?.recyclerView?.visibility = View.GONE
+        }
 
         CoroutineScope(Dispatchers.Default).launch {
             try {
@@ -124,7 +131,7 @@ class NewsFragment : BaseFragmentModule() {
                 val newsPeruUseCase = NewsPeruUseCase(requireContext(), newsPeruRepository)
                 val newsPeruRequest = newsPeruUseCase.newsPeru()
 
-                delay(5000)
+                delay(4000)
 
                 withContext(Dispatchers.Main) {
                     when (newsPeruRequest) {
